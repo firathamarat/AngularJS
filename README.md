@@ -24,4 +24,5 @@
 <a target="_blank" href="http://oguzhamarat.com/AngularJS/15.Lesson_ng-invalid_ng-valid_ng-pristine_ng-dirty_ng-empty.html">• 15.Lesson_ng-invalid_ng-valid_ng-pristine_ng-dirty_ng-empty</a><br>
 <a target="_blank" href="http://oguzhamarat.com/AngularJS/16.Lesson_ng-submit.html">• 16.Lesson_ng-submit</a><br>
 <a target="_blank" href="http://oguzhamarat.com/AngularJS/17.Lesson_ng-disabled.html">• 17.Lesson_ng-disabled</a><br>
+<a target="_blank" href="http://oguzhamarat.com/AngularJS/18.Lesson_ng-src_ngAnimate">• 18.Lesson_ng-src_ngAnimate</a><br>
 • → güncelleniyor... ( sn: 07.06.2018 )
