@@ -1,0 +1,94 @@
+    <!DOCTYPE html>
+    <html lang="tr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>11.Lesson_ng-class</title>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+
+
+        <script>
+        
+            var ControllerExample = angular.module("myapp", []);
+            ControllerExample.controller("mycontrol", function( $scope ){
+
+                //seriNumberView fonksiyonu oluşturarak RseriNumber parametresiyle değer alındı ve ekranda alert olarak gösterildi
+                $scope.seriNumberView = function( RseriNumber ){
+                    alert( RseriNumber );
+                }
+         
+            });
+        </script>
+
+        <style>
+        
+            .divstyle{
+                color: white;
+                background-color: black;
+                font-family: Verdana;
+                font-size:20px;
+            }
+
+
+            .sunderlined {
+                text-decoration: underline;
+            }
+            .sbold {
+                font-weight: bold;
+            }
+            .sitalic {
+                font-style: italic; 
+            }
+
+
+        </style>
+
+    </head>
+
+
+    <!--
+        ♦ ng-class = "" : Yönergesi dinamik eklenecek tüm sınıfları temsil eden bir ifadedir. 
+        Veri bağlamada bir HTML elemanı CSS sınıfları ayarlamanızı sağlar.
+        Bu directive içine girilen koşul sonucunda elementin sonuna css class ekler.
+    -->
+    
+    <body ng-app="myapp" ng-controller="mycontrol">
+
+      
+        <!-- Kullanıcıdan bilgi almak için Input alanı eklendi -->
+        <input type="text" ng-model="seriNumber" placeholder="Seri Number">
+
+        <!-- Butona tıklandığında controller alanında tanımlanan seriNumberView fonksiyonuna parametre olarak seriNumber değeri gönderildi -->
+        <button ng-click="seriNumberView( seriNumber )">Kontrol Et</button>
+
+
+        <br><br><br> <!-- -->
+
+
+        <!--Chechbox nesnesine tıklandığında ng-show özelliğini taşıyan div'in gizlenip gösterilmesi -->
+        <input type="checkbox" ng-model="state"> {{state}}
+        <div ng-show="state">Bu alan checkbox hareketine göre tepki vermektedir.</div>
+
+
+        <br><br><br> <!-- -->
+
+        <!--Chechbox nesnesine tıklandığında ng-class özelliği ile div'in style özelliği değiştirilmektedir  -->
+        <input type="checkbox" ng-model="statestyle"> {{statestyle}}
+
+        <!-- ng-class ="{'div' : koşul}"-->
+        <div ng-class="{'divstyle' : statestyle}">Bu alan Chechbox hareketine göre style değiştirmektedir.</div>
+
+        <br><br><br><br> <!-- -->
+
+        <p style="font-size:25px" ng-class="{'sbold' : mbold, 'sitalic': mitalic, 'sunderlined': munderlined }">Bu bir ng-class örneği yazısı</p>
+        <input type="checkbox" ng-model="mbold"> Kalın Yap
+        <input type="checkbox" ng-model="mitalic"> İtalik Yap
+        <input type="checkbox" ng-model="munderlined"> Altını Çiz
+
+
+
+        
+    </body>
+</html>

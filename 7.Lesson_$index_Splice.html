@@ -1,0 +1,48 @@
+    <!DOCTYPE html>
+    <html lang="tr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>7.Lesson_$index_Splice</title>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+
+        <script>
+        
+            var ControllerExample = angular.module("myapp", []);
+            ControllerExample.controller("mycontrol", function( $scope ){
+
+
+            //Gunler adında haftanın günlerinden oluşan dizi tanımlandı
+            $scope.Gunler = ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar"];
+
+            $scope.deleteFunction = function( alinanIndexNum ){
+
+                //splice diziden elemen silmek için kullanılmaktadır
+                $scope.Gunler.splice(alinanIndexNum, 1)
+
+            }
+
+            });
+
+        </script>
+
+    
+    </head>
+
+  
+    <body ng-app="myapp" ng-controller="mycontrol">
+
+        <!-- $index ile ilgili dizinin index sırası alınabilmektedir  -->
+        
+        <ul>
+            <li ng-repeat="Gun in Gunler">
+                <a ng-click="deleteFunction($index)">X</a> -
+                {{Gun}}
+            </li>
+        </ul>
+
+     
+    </body>
+</html>
