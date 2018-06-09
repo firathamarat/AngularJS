@@ -1,0 +1,67 @@
+    <!DOCTYPE html>
+    <html lang="tr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>8.Lesson_ng-bind-html_ng-src</title>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-sanitize.js"></script>
+
+        <script>
+        
+            var ControllerExample = angular.module("myapp", []);
+            ControllerExample.controller("mycontrol", function( $scope, $sce ){
+
+            //expression default değerleri boş olarak ayarlandı
+            $scope.htmlcode1="";
+            $scope.htmlcode2="";
+
+
+            //Butona basıldığında işlem yapacak function declare edildi
+            $scope.codeView = function(){
+
+                
+                $scope.htmlcode1 = "<h1>Merhaba Dünya</h1>";
+
+                $scope.htmlcode2 = $sce.trustAsHtml("<h1>Merhaba Dünya</h1>")
+
+                $scope.logoImage = "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png";
+
+            }
+
+
+            });
+        </script>
+
+    </head>
+
+
+    <!--
+           ♦ ng-bind-html = "" : İfadeyi denetler ve güvenli bir şekilde belirtilen elemanın içine ekler.
+           Html öğesini başka bir html içine eklememizi sağlar. jQuery’de ki append işlemi gibi sayılır.
+           JSON mantığıyla yazılmış kodları da çalıştırmamıza imkan sağlamaktadır 
+        
+           NOT: angular-sanitize.js unutulmamalıdır 
+    -->
+    
+    <body ng-app="myapp" ng-controller="mycontrol">
+
+
+        <br>
+        <button ng-click="codeView()">KODU ÇAĞIR</button>
+        <br><br>
+
+        <div ng-bind="htmlcode1"></div>
+        {{htmlcode1}}
+        
+        <div ng-bind-html="htmlcode2"></div>
+      
+        <!-- Rasim ekleme için ise sadece src değil ng-src kullanılır -->
+        <img ng-src="{{logoImage}}">
+        
+
+    </body>
+</html>

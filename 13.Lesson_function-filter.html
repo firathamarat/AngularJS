@@ -1,0 +1,68 @@
+    <!DOCTYPE html>
+    <html lang="tr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>13.Lesson_function-filter</title>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+
+
+        <script>
+        
+            var ControllerExample = angular.module("myapp", []);
+            ControllerExample.controller("mycontrol", function( $scope ){
+
+
+                //isimler adında boş bir dizi oluşturuldu
+                $scope.isimler = [];
+   
+             
+                //kullanıcıların verilerinin yer aldığı veriler dizisi tanımlandı.
+                $scope.veriler = [
+                            {"ad" : "Elif", "soyad" : "Avşar", "yas" : 24, "borc" : 90},
+                            {"ad" : "Fırat", "soyad" : "Hamarat", "yas" : 24, "borc" : 20},
+                            {"ad" : "Ali", "soyad" : "Sönmez", "yas" : 15, "borc" : 150},
+                            {"ad" : "Veli", "soyad" : "Söner", "yas" : 25, "borc" : 45},
+                            {"ad" : "Ayşe", "soyad" : "Sönecek", "yas" : 12, "borc" : 55},
+                            {"ad" : "Mehmet", "soyad" : "Söndü", "yas" : 22, "borc" : 25}
+                     ];
+
+
+                     $scope.BilgiGetir = function( AlinanBorcBilgisi ){
+
+                         $scope.isimler = $scope.veriler.filter( function( KBBilgisi ){
+
+                            return KBBilgisi.borc > AlinanBorcBilgisi;
+
+                         });
+
+                     }
+
+
+            });
+        </script>
+
+
+    </head>
+
+    <!-- BORCU 90 DAN BÜYÜK OLANLAR ÇEKİLECEK-->
+
+    
+    <body ng-app="myapp" ng-controller="mycontrol">
+
+        <!-- Input alanı ile hangi borc aralığı görülmek isteniyorsa girilir -->
+        <input type="text" ng-model="BtnBorcBilgisi">
+
+        <!-- Getir adlı buton ile parametre alarak BilgiGetir fonksiyonu çağrıldı -->
+        <button ng-click="BilgiGetir( BtnBorcBilgisi )">Getir</button>
+
+        <ul>
+            <li ng-repeat="isim in isimler"> 
+                {{isim}} --> {{isim.ad}} {{isim.soyad}} {{isim.yas}} {{isim.borc}}
+            </li>
+        </ul>
+
+    </body>
+</html>

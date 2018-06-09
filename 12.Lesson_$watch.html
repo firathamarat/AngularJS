@@ -1,0 +1,56 @@
+    <!DOCTYPE html>
+    <html lang="tr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>12.Lesson_$watch</title>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+
+
+        <script>
+        
+            var ControllerExample = angular.module("myapp", []);
+            ControllerExample.controller("mycontrol", function( $scope ){
+
+             
+             $scope.number = 1;
+
+             $scope.warningText = "";
+
+            //$watch bir değeri takip etmek için kullanılır. number hangi değeri takip edeceğidir.
+             $scope.$watch("number", function(){
+
+                if($scope.number == 11){
+                    $scope.warningText = "En fazla 10 kişi girilebilmektedir!"
+                    $scope. number = 10;
+                }
+                
+                if($scope.number == 0){
+                    $scope.warningText = "Kişi sayısı 1'den küçük olamaz!"
+                    $scope.number = 1;
+                }
+
+               
+
+             })
+
+
+            });
+        </script>
+
+
+    </head>
+
+    
+    <body ng-app="myapp" ng-controller="mycontrol">
+
+        Kişi Sayısı: {{number}}
+
+        <button ng-click="number = number + 1"> + </button>
+        <button ng-click="number = number - 1">  -  </button>
+        {{warningText}}
+        
+    </body>
+</html>

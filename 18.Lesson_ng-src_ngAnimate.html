@@ -1,0 +1,114 @@
+    <!DOCTYPE html>
+    <html lang="tr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>18.Lesson_ng-src_ngAnimate</title>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular-animate.js"></script>
+
+        <script>
+        
+            // ***NOT: Animasyon kullanabilmek için .JS dosyası eklenmeli ve ngAnimate alanı yazılmalıdır.
+            var ControllerExample = angular.module("myapp", ['ngAnimate']);
+            ControllerExample.controller("mycontrol", function( $scope ){
+
+            //Eklenen nesnelerin default değerleri false olarak declare edildi
+            $scope.hideState1 = false;
+            $scope.hideState2 = false;
+            $scope.hideState2 = false;
+
+            //Eklemem resmim url adresi AngularImage ismiyle tutuldu
+            $scope.AngularImage = "https://angular.io/assets/images/logos/angular/angular.svg";
+
+            //Her bir animasyon için fonksiyon oluşturarak sahip oldukları değerin tam tersinde değer atamaları gerçekleştirildi
+            $scope.AnimateFunction1 = function(){
+                $scope.hideState1 =! $scope.hideState1;
+            }
+
+            $scope.AnimateFunction2 = function(){
+                $scope.hideState2 =! $scope.hideState2;
+            }
+
+             $scope.AnimateFunction3 = function(){
+                $scope.hideState3 =! $scope.hideState3;
+            }
+
+        
+        });
+        </script>
+
+        <style>
+
+            .Image1 {
+                transition: all 2s;
+                width: 100px; 
+            }
+            
+            .Image1.ng-hide {
+                opacity: 0;
+            }
+
+            .Image2 {
+                transition: all 2s;
+                width: 100px; 
+            }
+            
+            .Image2.ng-hide {
+                height: 1px;
+                width: 1px;
+            }
+
+            .Image3 {
+                transition: all 2s;
+                width: 100px; 
+            }
+            
+            .Image3.ng-hide {
+            transform: rotateZ(360deg);
+            }
+        
+        </style>
+
+
+    </head>
+
+    <!--
+        ngAnimate: Uygulamada animasyon özellikleri için kullanılır. (angular-animate.js)
+        ng-Animate, CSS animasyon ve transition özelliklerini, AngularJS için daha kolay kullanılabilir hale getiren bir modüldür. 
+        ng-hide / ng-show, ng-if, ng-repeat gibi direktifleri kullanırken, DOM objesinin çıktısı ve bu çıktının sahip olduğu-olacağı sınıf değerlerine tam olarak hakim olunmamaktadır. 
+        NgAnimate, bu direktiflerin değerlerine göre alakalı DOM elementlerine sınıf vererek CSS üzerinde bu sınıf için animasyon atanmasına izin verir.
+    -->
+
+    
+    <body ng-app="myapp" ng-controller="mycontrol">
+
+        <!-- NOT: Daha düzgün bir görünüm için tablo eklendi -->
+        <table>
+            <tr>
+                <td>
+                        <!-- ng-click attribute alanında AnimateFunction1 fonksiyonu çağrıldı -->
+                        <button ng-click="AnimateFunction1()">Göster / Gizle</button><br>
+       
+                        <!-- class ile stylle biçimlendirmeleri yapıldı, ng-hide özelliği verildi, resim ise bir değişkende tutularak ng-src alanına eklendi -->
+                        <img class="Image1" ng-hide="hideState1" ng-src="{{AngularImage}}">
+                </td>
+
+                <td>
+                        <button ng-click="AnimateFunction2()">Göster / Gizle</button><br>
+                        <img class="Image2" ng-hide="hideState2" ng-src="{{AngularImage}}">
+                </td>
+
+                <td>
+                        <button ng-click="AnimateFunction3()">Göster / Gizle</button><br>
+                        <img class="Image3" ng-hide="hideState3" ng-src="{{AngularImage}}">
+                </td>
+
+            </tr>
+        </table>
+
+     
+    </body>
+</html>

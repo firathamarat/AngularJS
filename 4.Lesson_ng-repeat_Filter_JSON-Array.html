@@ -1,0 +1,147 @@
+    <!DOCTYPE html>
+    <html lang="tr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>4.Lesson_ng-repeat_Filter_JSON-Array</title>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+
+        <script>
+        
+            var ControllerExample = angular.module("myapp", []);
+            ControllerExample.controller("mycontrol", function( $scope ){
+
+
+            //isimler adında dizi tanımlandı
+            $scope.isimler = ["Elif", "Fırat", "Kalp", "♥"];
+
+            //Veriler adında dizi tanımlandı
+            $scope.veriler = [
+                {"ad" : "Elif", "soyad" : "Avşar", "yas" : 24},
+                {"ad" : "Fırat", "soyad" : "Hamarat", "yas" : 24},
+                {"ad" : "Ali", "soyad" : "Sönmez", "yas" : 15},
+                {"ad" : "Veli", "soyad" : "Söner", "yas" : 25},
+                {"ad" : "Ayşe", "soyad" : "Sönecek", "yas" : 12},
+                {"ad" : "Mehmet", "soyad" : "Söndü", "yas" : 22}
+            ];
+
+            //haftaGunleri adında dizi tanımlandı
+            $scope.haftaGunleri = ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar"];
+
+
+            });
+        </script>
+
+    </head>
+
+
+     <!-- Ng-repeat ="" ng-modul'e ait bir directive'dir. 
+          Array içindeki nesnelere sıralı erişim sağlar.
+          Foreach döngüsü gibi düşünülebilinir. Nerede tekrarlanmasını istiyorsan oraya yazılır
+    -->
+
+    
+    <body ng-app="myapp" ng-controller="mycontrol">
+
+       
+            <!-- Filter işlemini kullanabilmek için Input alanı oluşturuldu -->
+             İsim Arama : <input type="text" ng-model="nameSearch"><br>
+
+            <ul>
+                <li ng-repeat="isim in isimler | filter: nameSearch"> <!-- ng-repeat döngü oluşturmak istenen yere yazılır -->
+                    {{isim}}
+                </li>
+            </ul>
+
+
+
+            <br><br> <!--...-->
+
+
+
+            <table style="border: 1px solid grey ">
+        
+                    <tr>
+                        <td width="100px" style="font-weight:bold">{veri}</td>
+                        <td width="100px">{veri.ad}</td> 
+                        <td width="100px">{veri.soyad}</td> 
+                        <td width="100px">{veri.yas}</td> 
+                    </tr>
+
+                    <!-- ng-repeat="" - Foreach döngüsü gibi düşünülebilinir. Nerede tekrarlanmasını istiyorsan oraya yazılır -->
+                    <tr ng-repeat="veri in veriler"> 
+                        <td width="350px">{{veri}}</td>
+                        <td width="100px">{{veri.ad}}</td> 
+                        <td width="100px">{{veri.soyad}}</td> 
+                        <td width="100px">{{veri.yas}}</td>
+                    </tr>
+            </table>
+
+
+
+            <hr><br> <!--...-->
+
+
+
+             Hafta Günleri Arama : <input type="text" ng-model="weekSearch"><br><br>
+       
+                <table style="border: 1px solid grey ">
+                    
+                        <tr>
+                            <td width="100px" style="font-weight:bold">GÜNLER</td>
+                            <td width="100px">$index</td> 
+                            <td width="100px">$first</td> 
+                            <td width="100px">$middle</td> 
+                            <td width="100px">$last</td> 
+                            <td width="100px">$even</td> 
+                            <td width="100px">$odd</td>  
+                        </tr>
+
+                        <tr ng-repeat="gunler in haftaGunleri | filter:weekSearch">
+                            <td width="100px">{{gunler}}</td>
+                            <td width="100px">{{$index}}</td> 
+                            <td width="100px">{{$first}}</td> 
+                            <td width="100px">{{$middle}}</td> 
+                            <td width="100px">{{$last}}</td> 
+                            <td width="100px">{{$even}}</td> 
+                            <td width="50px">{{$odd}}</td>
+                        </tr>
+
+                </table>
+
+
+                <br>
+
+
+                    $index : elemanın index değerini verir.<br>
+                    $first : 1. Elemanda true değerini alır.<br>
+                    $middle : 1. Ve son eleman hariç true değerini alır.<br>
+                    $last : son elemanda true değerini alır.<br>
+                    $even : çift indexte true değerini alır.<br>
+                    $odd : tek indexte true değerini alır.
+
+
+            <br><br><br><hr> <!--...-->
+                    
+
+            <div ng-init=" garage = [
+                                     {brand: 'Kawasaki', country: 'Japan'},
+                                     {brand: 'Honda', country: 'Japan'},
+                                     {brand: 'Suzuki', country: 'Japan'},
+                                     {brand: 'Ducati', country: 'Italy'},
+                                     {brand: 'Harley Davidson' ,country: 'USA'},
+                                     {brand:'Bmw',country:'Germany'}]">
+
+                    <ul>
+                        <li ng-repeat="car in garage">
+                            {{ car.brand + ' ' + car.country }}
+                        </li>
+                    </ul>
+
+            </div>
+
+        
+    </body>
+</html>
