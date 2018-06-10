@@ -1,0 +1,74 @@
+    <!DOCTYPE html>
+    <html lang="tr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>20.Lesson_login-Success</title>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+
+        <script>
+
+
+            var ControllerExample = angular.module("myapp", []);
+            ControllerExample.controller("mycontrol", function( $scope ){
+
+                //Disabled olmayan butona tıklandığında çalışacak fonksiyon tanımlandı ve ekrana alert ile bilgilendirme yapıldı
+                $scope.loginSuccess = function(){
+                    alert("Giriş işlemi başarıyla gerçekleştirildi.")
+                }
+
+            });
+        </script>
+
+
+
+        <style>
+        
+            /* Default button stili ayarlandı */
+            button {
+                cursor: pointer;
+                background-color: cornflowerblue;
+                color: white;
+                border: none;
+                outline: none;
+                height: 22px;
+            }
+
+            /* Disabled button stili ayarlandı */
+            button:disabled {
+                cursor: not-allowed;
+                background-color: grey;
+            }
+
+        </style>
+      
+
+
+    </head>
+    
+
+    <body ng-app="myapp" ng-controller="mycontrol">
+
+
+    <!--2 adet Input alanı eklenerek kullanıcıdan aynı şifre girmesi istendi -->
+    <input type="text" ng-model="password" placeholder="Şifre Giriniz" size="10px">
+    <input type="text" ng-model="passcheck" placeholder="Şifre Onay" size="10px">
+    
+     <!-- Buton eklenerek ng-disabled özelliğine password ile passcheck değerlerinin eşleşmemesi 
+          veya password alanının bir değere sahip olmaması 
+          veya passcheck alanının bir değere sahip olmaması koşulu eklenerek butonun disabled özelliği kontrol edildi.
+          Kullanılan || işaretiyle 3 koşuldan biri true değer taşıması durumunda buton disabled olacaktır.
+          Butonun disabled olmadığı durumda tıklandığında ng-click ile loginSuccess fonksiyonuna gönderildi. -->
+     <button ng-disabled="password != passcheck || !password || !passcheck" ng-click="loginSuccess()">GİRİŞ YAP</button>
+
+     <!-- Şifrelerin uyuşmadığını göstermek amacıyla ng-show özelliğiyle password ile passcheck değerlerinin birbirine eşit olmaması 
+          ve password alanının değer taşıması
+          ve passcheck alanının değer taşıması koşulu eklenerek uyarının ekranda gösterilmesi sağlandı.
+          Girilen 3 şartında true değer taşıması durumunda ilgili div ekranda görülecektir. -->
+     <div ng-show="password != passcheck && password && passcheck" style="color:red; font-family:verdana; font-size: 10px">Uyarı: Şifre eşleşmemektedir!</div>
+
+
+    </body>
+</html>

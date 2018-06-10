@@ -26,4 +26,6 @@
 <a target="_blank" href="http://oguzhamarat.com/AngularJS/17.Lesson_ng-disabled.html">• 17.Lesson_ng-disabled</a><br>
 <a target="_blank" href="http://oguzhamarat.com/AngularJS/18.Lesson_ng-src_ngAnimate.html">• 18.Lesson_ng-src_ngAnimate</a><br>
 <a target="_blank" href="http://oguzhamarat.com/AngularJS/19.Lesson_ng-enter_ng-leave_Push_Splice.html">• 19.Lesson_ng-enter_ng-leave_Push_Splice</a><br>
-• → güncelleniyor... ( sn: 09.06.2018 )
+<a target="_blank" href="http://oguzhamarat.com/AngularJS/20.Lesson_login-Success.html">• 20.Lesson_login-Success</a><br>
+<a target="_blank" href="http://oguzhamarat.com/AngularJS/21.Lesson_Multi-Controller_Factory.html">• 21.Lesson_Multi-Controller_Factory</a><br>
+• → güncelleniyor... ( sn: 10.06.2018 )

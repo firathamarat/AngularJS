@@ -1,0 +1,91 @@
+    <!DOCTYPE html>
+    <html lang="tr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>21.Lesson_Multi-Controller_Factory</title>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+
+        <script>
+
+
+            var ControllerExample = angular.module("myapp", []);
+
+            //Kontrollerin üstünde bir faktory tanımlandı
+            ControllerExample.factory("firstFactory", function(){
+
+                //isimler adında bir dizi oluşturuldu ve bu değerleri geri döndürüldü
+                isimler = ["Elif", "Fırat", "Ali", "Veli", "Ayşe", "Nur"];
+                return isimler;
+
+            })
+
+            //* NOT: Oluşturulan Factory hangi controller içinde kullanılacaksa eklenmelidir
+
+            ControllerExample.controller("mycontrol", function( $scope, firstFactory ){
+
+                $scope.text1 = "mycontrol tarafından yönetilen alan";
+
+                //firstFactory alanındaki değerler isimEkle alanına atandı
+                $scope.isimEkle = firstFactory;
+
+                $scope.insertFunction = function(){
+                    $scope.isimEkle.push( $scope.insertName );
+                    $scope.insertName ="";
+                }
+
+            });
+
+            
+            ControllerExample.controller("mycontrol2", function( $scope, firstFactory ){
+
+                $scope.text2 = "mycontrol2 tarafından yönetilen alan";
+
+                //factory ile oluşturulan değerler isimGoster alanına atandı
+                $scope.isimGoster = firstFactory;
+            });
+
+        </script>
+
+
+    </head>
+
+    <!-- 
+         FACTORY: Controller için de tanımlanan yapılar sadece tanımlanan alanlar içinde kullanılır eğer dışarı açmak istenirse Factory devreye girmektedir.
+         Factory ile tanımlama yaparak Controller'lar arası iletişim kurulabilmektedir.
+    -->
+    
+    <body ng-app="myapp">
+
+
+        <div ng-controller="mycontrol">
+
+            <!-- mycontrol control alanında bulunan değer expressions ile ekranda gösterildi -->
+            {{text1}}<br><br>
+            
+            <!-- firstFactory adıyla tanımlanan faktory'nin içinde bulunan isimler dizisine isim eklemek için input alanı oluşturuldu ve enter ile tetiklendirildi -->
+            İsim ekleyiniz : <input type="type" ng-model="insertName" placeholder="Eklenecek isim" ng-keyup="$event.keyCode == 13 ? insertFunction():null">
+        </div>
+
+
+        <hr><!-- -->
+
+
+        <div ng-controller="mycontrol2">
+
+            <!-- mycontrol2 control alanında bulunan değer expressions ile ekranda gösterildi -->
+            {{text2}}
+
+            <ul>
+                <li ng-repeat="goster in isimGoster">
+                    {{goster}}
+                </li>
+            </ul>
+
+        </div>
+
+
+    </body>
+</html>
