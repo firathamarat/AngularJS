@@ -1,0 +1,45 @@
+    <!DOCTYPE html>
+    <html lang="tr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>25.Lesson_digest()-apply()</title>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+
+        <script>
+
+            var ControllerExample = angular.module("myapp", []);
+            ControllerExample.controller("mycontrol", function( $scope, $rootScope ){
+
+              
+                document.getElementById("btn").addEventListener("click", function (){
+
+                    $scope.randomNumber = Math.random();
+                    console.log($scope.randomNumber + " değeri ekrana gönderildi.")
+                    $scope.$digest();
+
+                    /*
+                    digest() : Sadece $scope güncellerken,
+                    $apply() : rootScope'u da güncellemektedir.
+
+                    $apply:Kelime anlamı olarak başvurmak ve kullanmak anlamına gelen bu işlevin yaptığı tam olarak bu aslında bizim $Scope ile kullandığımız parametreleri var olmasını sağlıyor.
+                    $digest:Kelime anlamı olarak hazmetmek ve sindirmek anlamına gelen bu işlevin yaptığı tam olarak bu aslında bizim $Scope ile kullandığımız parametrelerin değerlerini pasif hale getiriyor.
+                    */
+
+                });
+
+                
+            });
+        </script>
+
+    </head>
+   
+    <body ng-app="myapp" ng-controller="mycontrol">
+
+        <button id="btn">Random Sayı Üret</button>
+        {{randomNumber}}
+
+    </body>
+</html>
