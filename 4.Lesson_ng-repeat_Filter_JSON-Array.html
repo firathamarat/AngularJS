@@ -50,10 +50,13 @@
              İsim Arama : <input type="text" ng-model="nameSearch"><br>
 
             <ul>
-                <li ng-repeat="isim in isimler | filter: nameSearch"> <!-- ng-repeat döngü oluşturmak istenen yere yazılır -->
+                <li ng-repeat="isim in isimler | filter : nameSearch"> <!-- ng-repeat döngü oluşturmak istenen yere yazılır -->
                     {{isim}}
                 </li>
             </ul>
+
+            <!-- Arama yapıldığında filterın uzunluğu 0'a eşitse ng-show ile div ekranda gösterildi -->
+            <div ng-show="(isimler | filter : nameSearch).length == 0" style="color:red; font-family:Verdana, Geneva, Tahoma, sans-serif; font-size:10px">Aradığınız sonuca ulaşılamadı!</div>
 
 
 

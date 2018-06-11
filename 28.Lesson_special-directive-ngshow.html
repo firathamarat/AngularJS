@@ -1,0 +1,62 @@
+    <!DOCTYPE html>
+    <html lang="tr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>28.Lesson_special-directive-ngshow</title>
+              
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+
+        <script>
+
+            var ControllerExample = angular.module("myapp", []);
+            ControllerExample.controller("mycontrol", function( $scope, $rootScope ){
+
+            
+            });
+
+
+            /*
+                AngularJS ile HTML etiketlerini yeni özellikler ile genişletmek mümkündür. AngularJS'de bu yeni özellikler Directive olarak adlandırılır.
+                Birden fazla Element, Class ve Attribute directive oluşturulabilmektedir.
+                İsimlendirme yaparken büyük harf içermemesine ve (-) tire kullanılmamasına dikkat edilmelidir.
+            */
+
+
+            ControllerExample.directive("goster", function(){
+
+                return {
+
+                    link: function( scope, element, attr ){
+
+                        if( attr.goster == 'true'){
+
+                            //attr.goster true değerini taşıyorsa display özelliği block olarak atandı
+                            element.css({"display" : "block"});
+
+                        }
+
+                        else{
+
+                            //attr.goster false değerini taşıyorsa display özelliği none olarak atandı
+                            element.css({"display" : "none"});
+
+                        }
+
+                    }
+                }
+            });
+
+        </script>
+
+    
+    </head>
+   
+    <body ng-app="myapp" ng-controller="mycontrol">
+       
+        <!-- ng-show işlevine benzer bir yapıyı özel directive ile baştan kendimiz yazdık -->
+        <div goster="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget condimentum urna, ac vehicula dui. Pellentesque rutrum pellentesque accumsan. Vivamus rhoncus, erat vitae tristique dapibus, enim odio pharetra tellus, a dignissim ante ante at turpis.  </div>
+
+    </body>
+</html>

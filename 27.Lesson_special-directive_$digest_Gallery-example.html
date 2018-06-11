@@ -1,0 +1,96 @@
+    <!DOCTYPE html>
+    <html lang="tr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>27.Lesson_special-directive_$digest_Gallery-example</title>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+
+        <script>
+
+            var ControllerExample = angular.module("myapp", []);
+            ControllerExample.controller("mycontrol", function( $scope, $rootScope ){
+
+                //imgURL adında alan oluşturup default değer atandı
+                $scope.imgURL = "https://angular.io/assets/images/logos/angular/angular.svg";
+            
+            });
+
+
+            /*
+                AngularJS ile HTML etiketlerini yeni özellikler ile genişletmek mümkündür. AngularJS'de bu yeni özellikler Directive olarak adlandırılır.
+                Birden fazla Element, Class ve Attribute directive oluşturulabilmektedir.
+                İsimlendirme yaparken büyük harf içermemesine ve (-) tire kullanılmamasına dikkat edilmelidir.
+            */
+
+
+            ControllerExample.directive("selectdirective", function(){
+
+                return {
+
+                    link: function( $scope, $element, $attr ){
+
+                        $element.on("click", function(){
+
+                            //tıklama eylemi gerçekleştiğinde console.log ekranına ilgili nesnenin attribute değerleri gönderildi
+                            console.log($attr);
+
+                            //imgURL alanına ilgini nesnenin attribute değerlerinden ngSrc değeri gönderildi, ngSrc değeri resim adreslerini tutmaktadır
+                            $scope.imgURL = $attr.ngSrc;
+
+                            //$digest() özel yaratılmış directive'lerde $scope'u güncellemek için kullanılır
+                            $scope.$digest();
+
+                        });
+
+                    }
+                }
+            });
+
+        </script>
+
+        
+        <style>
+
+            /* eklenen resimler için style düzenlemesi yapıldı */
+            .imageSmall img {
+                cursor: pointer;
+                height: 100px;
+                width: 122px;
+            }
+
+            .imageBig img {
+                height: 500px;
+                width: 500px;
+            }
+
+        </style>
+
+    </head>
+   
+    <body ng-app="myapp" ng-controller="mycontrol">
+
+
+        <div class="imageSmall">
+
+            <!-- img nesneleri selectdirective directive'i eklendi -->
+
+            <img selectdirective ng-src="https://angular.io/assets/images/logos/angular/angular.svg">
+            <img selectdirective ng-src="https://angular.io/assets/images/logos/angular/angular_solidBlack.svg">
+            <img selectdirective ng-src="https://angular.io/generated/images/marketing/features/feature-icon.svg">
+            <img selectdirective ng-src="https://angular.io/generated/images/marketing/home/code-icon.svg">
+            
+        </div>
+        
+        <div class="imageBig">
+
+            <!-- selectdirective ile imgURL alanına atanan resim adresi değerleri expression ile ekranda gösterildi -->
+            <img ng-src="{{imgURL}}">
+
+        </div>
+        
+
+    </body>
+</html>
