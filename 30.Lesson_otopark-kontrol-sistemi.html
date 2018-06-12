@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30.Lesson_otopark-kontrol-sistemi</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+
+    <!-- bootstrap projeye dahil edildi -->
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+
+    <script>
+
+        var ControllerExample = angular.module("myapp", []);
+        ControllerExample.controller("mycontrol", function ($scope, $rootScope) {
+
+
+            //Güncellenecek olan indexin değerli tutmak için selectUpdateItemNumber adında alan declare edildi ve boş değer atandı
+            $scope.selectUpdateItemNumber = "";
+
+            //Otopark isminde dizi tanımlandı ve değerler girildi
+            $scope.otopark = [{ "plaka": "34 EF 2109", "konum": "A BLOK / A BLOCK", "saat": "13.00" }]
+
+
+            //Kayıt işlemi gerçekleştirmek için signup adında fonksiyon oluşturuldu
+            $scope.signup = function () {
+
+                //Otopark adlı alana ekleme yapmak için push kullanıldı ve ng-modellerden nesnelere erişerek içerdikleri değerler otopark alanlarına atandı
+                $scope.otopark.push({ "plaka": $scope.aracPlaka, "konum": $scope.aracKonum, "saat": $scope.aracSaat });
+
+                //Eklenen araç hakkında bilgiler console.log ekranına atandı
+                console.log("Eklenen Araç Hakkında Bilgi: - Plakası: " + $scope.aracPlaka + " - Konumu: " + $scope.aracKonum + " - Giriş Saati: " + $scope.aracSaat);
+
+                //Ekleme işleminden sonra nesnelerin içine boş değer atandı
+                $scope.aracPlaka = "";
+                $scope.aracKonum = "";
+                $scope.aracSaat = "";
+
+            }
+
+
+            //Silme işlemi gerçekleştirmek için delete adında fonksiyon oluşturuldu, silinecek elemanın index numarasını parametre kullanılarak alındı
+            $scope.delete = function (indexNumber) {
+
+                //Silinen araç hakkında bilgiler console.log ekranına atandı
+                console.log("Silinen Araç Hakkında Bilgi: - Plakası: " + $scope.otopark[indexNumber].plaka + " - Konumu: " + $scope.otopark[indexNumber].konum + " - Giriş Saati: " + $scope.otopark[indexNumber].saat);
+
+
+                //splice silmek için kullanılmaktadır. indexNumber değerinden başlayarak 1 eleman sil denmektedir yani kendinisini silmektedir
+                $scope.otopark.splice(indexNumber, 1);
+
+            }
+
+
+            //Güncelleme işlemi gerçekleştirmek için update adında fonksiyon oluşturuldu, güncellecek elemanın index numarasını parametre kullanılarak alındı
+            $scope.update = function (indexNumber) {
+
+                //otopark dizisinde bulunan indexNumber değeriyle gelen değerler ng-model isimleriyle nesnelere atama yapıldı
+                $scope.aracPlaka = $scope.otopark[indexNumber].plaka;
+                $scope.aracKonum = $scope.otopark[indexNumber].konum;
+                $scope.aracSaat = $scope.otopark[indexNumber].saat;
+
+                //Güncellenen araç hakkında bilgiler console.log ekranına atandı
+                console.log("Güncellenen Araç Hakkında Bilgi: - Plakası: " + $scope.otopark[indexNumber].plaka + " - Konumu: " + $scope.otopark[indexNumber].konum + " - Giriş Saati: " + $scope.otopark[indexNumber].saat);
+
+                //Seçilen index numarasını bir yerde tutmak için selectUpdateItemNumber alanına atandı
+                $scope.selectUpdateItemNumber = indexNumber;
+
+            }
+
+
+            //Seçili güncelleme işlemi gerçekleştirmek için selectUpdate adında fonksiyon oluşturuldu
+            $scope.selectUpdate = function () {
+
+                //spilice ile ekleme yapılmak isteniyorsa virgülden sonra değer girilmelidir, ng-model isimleriyle nesnelerin içindeki değerler eklendi 
+                $scope.otopark.splice($scope.selectUpdateItemNumber, 1, { "plaka": $scope.aracPlaka, "konum": $scope.aracKonum, "saat": $scope.aracSaat });
+
+                //Güncellenen araç hakkında bilgiler console.log ekranına atandı
+                console.log("Eklenen Araç Hakkında Bilgi: - Plakası: " + $scope.aracPlaka + " - Konumu: " + $scope.aracKonum + " - Giriş Saati: " + $scope.aracSaat);
+
+                //Güncelleme işleminden sonra nesnelerin içine boş değer atandı
+                $scope.aracPlaka = "";
+                $scope.aracKonum = "";
+                $scope.aracSaat = "";
+
+            }
+
+        });
+    </script>
+
+
+</head>
+
+
+
+<body>
+
+    <div ng-app="myapp" ng-controller="mycontrol">
+
+        <div class="container">
+
+            <div class="panel">
+                <h2>Otopark Kontrol Sistemi</h2>
+                <p>Yazılım ile araçların plakalarını, giriş ve çıkış saatlerini, bulunduğu nokta bilgilerini girebilir güncelleyebilir,
+                    silebilirsiniz
+                </p>
+            </div>
+
+            <table class="table table-hover">
+
+                <!-- Başlıklar ve Input alanları tanımlandı -->
+                <thead>
+                    <tr>
+                        <th>PLAKA NO</th>
+                        <th>KONUMU</th>
+                        <th>GİRİŞ SAATİ</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    
+                    <tr>
+                        <td>
+                            <input ng-model="aracPlaka" type="text" class="form-control" size="3">
+                        </td>
+                        <td>
+                            <select ng-model="aracKonum" class="form-control">
+                                <option>A BLOK / A BLOCK</option>
+                                <option>B BLOK / B BLOCK</option>
+                                <option>C BLOK / C BLOCK</option>
+                                <option>D BLOK / D BLOCK</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input ng-model="aracSaat" type="text-local" class="form-control">
+                        </td>
+                        <td>
+                            <button ng-click="signup()" class="btn btn-success">ARAÇ KAYIT</button>
+                            <button ng-click="selectUpdate()" class="btn btn-primary">GÜNCELLE</button>
+                        </td>
+
+                    </tr>
+
+                    <tr ng-repeat="arac in otopark">
+
+                        <td>{{arac.plaka}}</td>
+                        <td>{{arac.konum}}</td>
+                        <td>{{arac.saat}}</td>
+
+                        <td>
+                            <button ng-click="delete($index)" class="btn btn-danger">KALDIR</button>
+                            <button ng-click="update($index)" class="btn btn-primary">GÜNCELLE</button>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

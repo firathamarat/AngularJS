@@ -35,4 +35,6 @@
 <a target="_blank" href="http://oguzhamarat.com/github/AngularJS/26.Lesson_special-directive.html">• 26.Lesson_special-directive</a><br>
 <a target="_blank" href="http://oguzhamarat.com/github/AngularJS/27.Lesson_special-directive_$digest_Gallery-example.html">• 27.Lesson_special-directive_$digest_Gallery-example</a><br>
 <a target="_blank" href="http://oguzhamarat.com/github/AngularJS/28.Lesson_special-directive-ngshow.html">• 28.Lesson_special-directive-ngshow</a><br>
-• → güncelleniyor... ( sn: 11.06.2018 )
+<a target="_blank" href="http://oguzhamarat.com/github/AngularJS/29.Lesson_ngTouch_ng-swipe-left_ng-swipe-right_ng-show.html">• 29.Lesson_ngTouch_ng-swipe-left_ng-swipe-right_ng-show</a><br>
+<a target="_blank" href="http://oguzhamarat.com/github/AngularJS/30.Lesson_otopark-kontrol-sistemi.html">• 30.Lesson_otopark-kontrol-sistemi</a><br>
+• → güncelleniyor... ( sn: 12.06.2018 )
