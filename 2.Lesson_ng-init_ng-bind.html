@@ -1,71 +1,99 @@
-    <!DOCTYPE html>
-    <html lang="tr">
+<!DOCTYPE html>
+<html lang="tr">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>2.Lesson_ng-init_ng-bind</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.Lesson_ng-init_ng-bind</title>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
 
-    </head>
+</head>
 
-    <!--
+<!-- 
 
-        ♦ ng-init = "" :  Direktifi, geçerli taşıyıcı scope'u için bir expression'a başlangıç değeri tanımlamamızı sağlar.
-        Birden fazla tanımlama gerçekleştirilebilir. ng-app = "" istenilen elemente eklenebilir.
+        ♦ ng-init = "" :  AngularJS’de kullanılacak değişkenlerin tanımlandığı alandır. 
+          ng-init direktifi, geçerli taşıyıcı scope'u için bir expression'a başlangıç değeri tanımlanmasını sağlamaktadır.
+          Diğer dillerde olduğu gibi birden fazla tanımlama gerçekleştirilebilmektedir.
+
+          SYNTAX:
+          <element ng-init="expression"></element>
+
 
         ♦ ng-bind = "" : Direkfiti ile DOM üzerinde herhangi bir elementin içeriğini scope içerisindeki herhangi bir değişkene bağlanabilir.
-        Özellik, belirli bir ifadenin değeri ile belirtilen HTML öğesinin metin içeriğini değiştirmek ve metin içeriğini güncellemek için kullanılır.
+          Özellik, belirli bir ifadenin değeri ile belirtilen HTML öğesinin metin içeriğini değiştirmek ve metin içeriğini güncellemek için kullanılır.
+
+          SYNTAX:
+          <element ng-bind="expression"></element>
+          Or as a CSS class:
+          <element class="ng-bind: expression"></element>
 
     -->
-    
-    <body ng-app="" ng-init="exampleValue='Burada bir değer var!'; total = 15 + 10">
+
+<body ng-app="" ng-init="exampleValue='Burada bir değer var!'; total = 15 + 10">
 
 
 
-        <!-- ng-init ile tanımlamış olan exampleValue değişkeni ng-bind ile p elementinin içeriği canlı olarak değiştirmek için birbirine bağlandı -->
-        <p ng-bind="exampleValue"></p>
+    <!-- ng-init ile tanımlamış olan exampleValue değişkeni ng-bind ile p elementine bağlandı -->
+    <p ng-bind="exampleValue"></p>
 
-        <!-- 
+    <!-- 
              *** NOT:
-             Bunun yerine {{expression}} özelliği de kullanılabilirdi. Bazı durumlarda kod okumasını kolaylaştırmaktadır.
-             Fakat ng-bild ile arasındaki tek fark ise {{ }} sayfa tamamen yüklene kadar ekrandaki alanlar text olarak görünmektedir. 
-             Bu durum ng-cloak direktifi kullanarak gizlenebilmektedir. 
+             Bunun yerine {{expression}} özelliği de kullanılabilirdi. Expression bazı durumlarda kod okumasını kolaylaştırmaktadır.
+             Fakat ng-bild ile arasındaki tek fark ise, {{expression}} sayfa tamamen yüklene kadar ekrandaki alanlar text olarak görünmektedir. 
+             Bu durum da ng-cloak direktifi kullanılarak çözülmektedir.. 
         -->
 
-        {{total}}
+    {{"Toplam Değer: " + total}}
+
+    <br>
+    <br>
+
+    <!-- Farklı elemanlarının içine ng-inint ile declare edilen değerler atanabilmektedir -->
+    <input type="text" placeholder="{{exampleValue}}">
+    <input type="text" value="{{exampleValue}}">
 
 
-        <!-- Farklı elemanlarının içine ng-inint ile declare edilnen değerlerde aktarılabilir -->
-        <input type="text" placeholder="{{exampleValue}}">
-        <input type="text" value="{{exampleValue}}">
+    <br>
+    <br>
+    <hr>
 
 
-       <br><br><hr><!--...-->
+    <!-- ng-init direktifinin içinde birden çok dizi oluşturup değerler tanımlanabilmektedir -->
+    <div ng-app="" ng-init="superCar = { carModel:'Porsche 911', maxSpeed:'315'};  WeekDay = ['Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi', 'Pazar']">
 
 
-       <!-- Class'lar tanımlanarak yapılan ng-init yöntemi -->
-        <div ng-app="" ng-init="superCar = { Marka:'Porsche 911', MaksimumHiz:'315'};  WeekDay = ['Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi', 'Pazar']">
+        <p>
+            <span ng-bind="superCar.carModel"></span>, maksimum hızı:
+            <span ng-bind="superCar.maxSpeed"></span>
+        </p>
 
-            <p><span ng-bind="superCar.Marka"></span>, maksimum hızı: <span ng-bind="superCar.MaksimumHiz"></span></p>
-            <p>Haftanın 1. Günü <span ng-bind="WeekDay[0]"></span>, haftanın 6. günü ise {{ WeekDay[5] }}'dir</p>
-
-            <!-- ng-init ile tanımlanan değerler ister ng-bing isterse expressions ifadeleriyle ekrana yazdırılabilir -->
-
-        </div>
+        <p>Haftanın 1. Günü
+            <span ng-bind="WeekDay[0]"></span>, haftanın 6. günü ise {{ WeekDay[5] }}'dir</p>
 
 
-        <br><br><hr><!--...-->
+    </div>
 
 
-        <!-- ng-init = "" ile değer verilen ve bu değerleri Input alanları ile değiştirerek hesaplanan değer ekrana yazıldı -->
-        <div ng-app="" ng-init="priceTotal={miktar:10, fiyat:12};">
-                <p>Adet: <input type="number" ng-model="priceTotal.miktar" /></p>
-                <p>Fiyat: <input type="number" ng-model="priceTotal.fiyat" /></p>
-                <p>Ödenecek: {{ priceTotal.miktar * priceTotal.fiyat }} ₺ </p>
-            </div>
+
+    <br>
+    <hr>
 
 
-    </body>
+
+    <!-- ng-init = "" direktifi ile değer verilen ve bu değerleri Input alanları ile değiştirerek hesaplanan priceTotal değeri expression ile ekranda gösterildi -->
+    <div ng-app="" ng-init="priceTotal={miktar:10, fiyat:12};">
+        <p>Adet:
+            <input type="number" ng-model="priceTotal.miktar" />
+        </p>
+        <p>Fiyat:
+            <input type="number" ng-model="priceTotal.fiyat" />
+        </p>
+        <p>Ödenecek: {{ priceTotal.miktar * priceTotal.fiyat }} ₺ </p>
+    </div>
+
+
+
+</body>
+
 </html>

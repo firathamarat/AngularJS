@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.Lesson_ng-app_ng-model</title>
+
+    <!-- CDN Kütüphanesi projeye eklendi -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+
+</head>
+
+
+<!-- 
+
+        ♦ CDN Kütüphanesi Adresi: https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js
+
+        ANGULARJS:
+        AngularJS, Google tarafından açık kaynak kodlu olarak geliştirilen, zengin, genişletilebilir,ciki yönlü veri aktarımı yapabilen
+        ve dinamik web uygulamaları yapmak için kullanılan bir JavaScript framwork’ü, MVC kütüphanesidir, SPA (Single Page Application) sayfalar geliştirilmesine olanak tanır. 
+        SPA’nın temeli yüklenen bir kaynağı tekrar yüklemeden o sayfada sadece ihtiyaç duyulan alanı değiştirmektir. 
+        MVC (Modal View Controller) verinin, görünümün ve kontrollerin ayrı tutulmasıdır. 
+
+        • Modal: Verilerin tutulduğu nesnelerdir. İlişkili olduğu View nesnesini tetikler.
+        • View: Görünümün (template) tutulduğu nesnelerdir.
+        • Controller: Modal ve View nesnelerinin bağlandığı nesnedir. İşlemler ve kontroller burada yapılmaktadır.
+
+        Angular tarafında ise MVW (Model View Whatever ) ifadesi kullanılıyor.
+        
+        Amaç arayüzde kod bloklarını minimum’a indirmek ve daha kararlı bir yapı izleyerek geliştirme süreçlerini kolaylaştırmaktır.
+        jQuery gibi kütüphanelere ihtiyaç duymadan çalışarak tek sayfa uygulamaları geliştirmeye olanak sağlar.
+        Bu tarz diğer kütüphanelerden en önemli farkı ise ÇİFT YÖNLÜ (Two Way Data Binding) olmasıdır. Yani veride olan değişiklik görünüme, görünümde olan değişiklik de veriye uygulanır.
+        Directive tanımlayarak html etiketlerini geliştirilmesine de olanak sağlar. Kodların kısalmasını sağlar kod karmaşasını büyük ölçüde önler.
+
+
+    ►►► KURULUM: 
+        AngularJS, yaklaşık 100 KB’tır ve resmi sitesi olan www.angularjs.org üzerinden indirebilirsiniz. 
+          
+       • Adımlar: www.angularjs.org > Download AngularJS > CND(kopyala) > head tagları içinde script tagları oluşturarak kopyalanan CND kütüphanesini yapıştır
+        NOT: AngularJS projesinin tarayıcı tarafından algılanması için başlangıç noktası olan ng-app direktifini istenilen alana eklenmesi gerekmektedir.
+
+
+        ♦ ng-app = "" : Html, Body, div vb. attribute'lere eklenen ng-app direktifi ile angularJS çekirdeğine yorumlayacağı blok tanımlamaktadır.
+          Unutulmaması gerek konu nereye yazılırsa onun altında bulunan etiketler AngularJS tarafından etkilenecektir.
+          Tarayıcıya projede AngularJS kullanıldığı bilgisi verilir. Kısacası AngularJS’in çalışacağı alandır.
+
+        ♦ ng-model = "" : Adından da anlaşılacağı gibi modelimiz, modelimiz ile ilgili işlemleri yapabilmek için ona atıfta bulunağımız isimdir.
+
+        ♦ ng-bind = "" : Tanımlanan modele bağlanan alan.
+
+        ♦ ng-init = "" : AngularJS’de kullanılacak değişkenlerin tanımlandığı yer (başlangıç değerleri verilebilir).
+
+        ♦ {{ }} : AngularJS expressions ifadelerin tanımlanma şeklidir. Çift süsülü parantezi bağlayıcı(binding) ifadeleri olarak kullanılmaktadır. 
+          Bu ifadelerin içindeki kodlar ve model verileri AngularJS tarafından yorumlanıp çıktı ekrana yazıdırılır.
+
+
+     -->
+
+
+<body ng-app="">
+
+
+    <!-- AngularJS'in sayfa içerisinde doğru bir şekilde çalıştığını test etmek için expressions ilestring ve matematiksel işlemler ekranda gösterilebilir -->
+    {{"Sayıların Toplamı: " + (5 + 20)}}
+
+    <br>
+    <br>
+
+    <!-- Input alanına yazılan karakterler expressions ifadesiyle ekranda gösterildi, expressions ifadesi ilgili nesnenin ng-model alanına bağlandı -->
+    <input type="text" ng-model="textField"> {{textField}}
+
+    <br>
+    <br>
+
+    <!-- Input alanına girilen doğum tarihi ile expressions ifadesinde matematiksel işlem yapılarak kullanıcının yaşı ekranda gösterildi -->
+    <input type="number" ng-model="ageCalculation" placeholder="Doğum Yılı"> {{2018 - ageCalculation}}
+
+
+</body>
+
+</html>

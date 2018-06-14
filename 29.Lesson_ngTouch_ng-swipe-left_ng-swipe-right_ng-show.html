@@ -1,71 +1,90 @@
-    <!DOCTYPE html>
-    <html lang="tr">
+<!DOCTYPE html>
+<html lang="tr">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>29.Lesson_ngTouch_ng-swipe-left_ng-swipe-right_ng-show</title>
-              
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
-        <script src="https://code.angularjs.org/snapshot/angular-touch.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>29.Lesson_ngTouch_ng-swipe-left_ng-swipe-right_ng-show</title>
 
-        <script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
 
-            //ngTouch JS dosyası be ngTouch ifadesi eklenmelidir
-            var ControllerExample = angular.module("myapp", ["ngTouch"]);
-            ControllerExample.controller("mycontrol", function( $scope, $rootScope ){
+    <!-- ngTouch JS dosyası ve ngTouch ifadesi eklenmelidir -->
+    <script src="https://code.angularjs.org/snapshot/angular-touch.js"></script>
 
-                //Başlangıç değeri olarak number alanına default olarak 0 değeri atandı
-                $scope.number = 0;
+    <script>
 
-            });
-        </script>
+        var ControllerExample = angular.module("myapp", ["ngTouch"]);
+        ControllerExample.controller("mycontrol", function ($scope, $rootScope) {
+
+            //Başlangıç değeri olarak number alanına default olarak 0 değeri atandı
+            $scope.number = 0;
+
+        });
+    </script>
 
 
-        <style>
-            
-            /* mydi için style tanımlamaları gerçekleştirildi */
-            .mydiv {
+    <style>
+        /* mydi için style tanımlamaları gerçekleştirildi */
 
-                height: 200px;
-                width: 200px;
-                text-align: center;
-                border: 1px solid grey;
+        .mydiv {
 
-            }
-        
-        </style>
+            height: 200px;
+            width: 200px;
+            text-align: center;
+            border: 1px solid grey;
 
-    </head>
+        }
+    </style>
 
-    <!-- 
+</head>
+
+<!-- 
+    
         ♦ ngTouch: Mobil tarayıcılar için geliştirilen uygulamalarda kullanılır. (angular-touch.js)
         ♦ ng-swipe-left = ""  : Sola doğru olan parmak hereketlerinde işlem gerçekleştirir.
+
+          SYNTAX:
+          as element:
+          <ng-swipe-left ng-swipe-left="expression"></ng-swipe-left>
+          as attribute:
+          <ANY ng-swipe-left="expression"></ANY>
+
         ♦ ng-swipe-right = "" : Sağa doğru olan parmak hereketlerinde işlem gerçekleştirir.
+
+          SYNTAX:
+          as element:
+          <ng-swipe-right ng-swipe-right="expression"></ng-swipe-right>
+          as attribute:
+          <ANY ng-swipe-right="expression"></ANY>
+
     -->
-   
-    <body ng-app="myapp" ng-controller="mycontrol">
-       
-        <!-- Kullanıcı bilgilendirmek için number değeri ekrenda gösterildi -->
-        Görsel No: {{number}}
 
-        <!-- Touch hareketlerinin gerçekleşeceği div üzerinde sağ ve sol hareketlerde number değeri 1 azaltılıp, 1 artırıldı -->
-        <div class="mydiv" ng-swipe-left="number = number + 1" ng-swipe-right="number = number - 1">
+<body ng-app="myapp" ng-controller="mycontrol">
 
-                <!-- ng-show ile number alanı hangi değere sahipse o ekranda gösterildi -->
-                <img ng-show="number ==-2" src="https://angular.io/assets/images/logos/angular/angular.svg">
-                <img ng-show="number ==-1" src="https://angular.io/assets/images/logos/angular/angular_solidBlack.svg">
-                <img ng-show="number ==0" src="https://angular.io/generated/images/marketing/features/feature-icon.svg">
-                <img ng-show="number ==1" src="https://angular.io/generated/images/marketing/home/code-icon.svg">
-                <img ng-show="number ==2" src="https://angular.io/assets/images/logos/angular/angular.svg">
+    <!-- Kullanıcı bilgilendirmek için number değeri ekrenda gösterildi -->
+    Görsel No: {{number}}
 
-      </div>
+    <!-- Touch hareketlerinin gerçekleşeceği div üzerinde sağ ve sol hareketlerde number değeri 1 azaltılıp, 1 artırıldı -->
+    <div class="mydiv" ng-swipe-left="number = number + 1" ng-swipe-right="number = number - 1">
 
-                <br><br>
-                Not: ngTouch dokunmatik ekranlarda çalışmaktadır.<br>
-                Test edebilmek için <span style="color:brown; font-weight:bold">F12</span> tuşuna<br>
-                basıldıktan sonra <span style="color:brown; font-weight:bold">ctrl + shift + m</span><br>
-                <i>"Simulate Mobile Devices with Device Mode"</i> moduna geçerek fareyle test edebilirsiniz.
+        <!-- ng-show ile number alanı hangi değere sahipse o ekranda gösterildi -->
+        <img ng-show="number ==-2" src="https://angular.io/assets/images/logos/angular/angular.svg">
+        <img ng-show="number ==-1" src="https://angular.io/assets/images/logos/angular/angular_solidBlack.svg">
+        <img ng-show="number ==0" src="https://angular.io/generated/images/marketing/features/feature-icon.svg">
+        <img ng-show="number ==1" src="https://angular.io/generated/images/marketing/home/code-icon.svg">
+        <img ng-show="number ==2" src="https://angular.io/assets/images/logos/angular/angular.svg">
 
-    </body>
+    </div>
+
+    <br>
+    <br> Not: ngTouch dokunmatik ekranlarda çalışmaktadır.
+    <br> Test edebilmek için
+    <span style="color:brown; font-weight:bold">F12</span> tuşuna
+    <br> basıldıktan sonra
+    <span style="color:brown; font-weight:bold">ctrl + shift + m</span>
+    <br>
+    <i>"Simulate Mobile Devices with Device Mode"</i> moduna geçerek fareyle test edebilirsiniz.
+
+</body>
+
 </html>

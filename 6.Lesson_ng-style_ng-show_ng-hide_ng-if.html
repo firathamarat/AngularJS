@@ -1,61 +1,76 @@
-    <!DOCTYPE html>
-    <html lang="tr">
+<!DOCTYPE html>
+<html lang="tr">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>6.Lesson_ng-style_ng-show_ng-hide_ng-if</title>
-    
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6.Lesson_ng-style_ng-show_ng-hide_ng-if</title>
 
-        <script>
-        
-            var ControllerExample = angular.module("myapp", []);
-            ControllerExample.controller("mycontrol", function( $scope, $http){
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
 
-                $scope.startNumber = 0;
+    <script>
+
+        var ControllerExample = angular.module("myapp", []);
+        ControllerExample.controller("mycontrol", function ($scope, $http) {
+
+            //startNumber adında başlangıç bir değer oluşturuldu ve 0 değeri atandı
+            $scope.startNumber = 0;
 
 
-                //durum ifadesine default olarak false değeri verildi.
-                $scope.durum = false;
+            //durum ifadesine default olarak false değeri verildi.
+            $scope.durum = false;
 
-                $scope.eylem = function(){
-                    
-                    $scope.durum =! $scope.durum;
+            //hideShowFunction adında fonksiyon tanımlandı
+            $scope.hideShowFunction = function () {
 
-                }
+                //$scope.durum alanının içine tam tersi değeri atandı
+                $scope.durum = !$scope.durum;
 
-              
-
-            });
-
-        </script>
-
-        <style>
-
-            .myclass{
-                width: 53px;
-                height: 50px;
             }
 
-        </style>
 
 
-    </head>
+        });
+
+    </script>
+
+    <style>
+        /* class style biçimlendirmesi yapıldı */
+
+        .myclass {
+            width: 53px;
+            height: 50px;
+        }
+    </style>
 
 
-     <!-- 
-            ♦ ng-style = "" JSON formatında stil düzenlemeleri yapmaktadır. Bu yöntem html öğesine koşullu bir style tanımlamanızı sağlar.
-              startNumber == 5 && ifadesiyle startNumber değişkenin 5 olması durumunda bu style dosyasını aktif yapacaktır. 
+</head>
+
+
+<!-- 
+            ♦ ng-style = "" : JSON formatında stil düzenlemeleri yapmaktadır. Bu yöntem html öğesine koşullu bir style tanımlamanızı sağlar.
+              
+              SYNTAX: <element ng-style="expression"></element>
+
+
+            ♦ ng-show = "" :  ve ♦ ng-hide = "" : direktifleri HTML elementlerinin görüntülenip gizlenmesini kontrol etmek için kullanılır.
+            
+              SYNTAX: <element ng-show="expression"></element>
+              SYNTAX: <element ng-hide="expression"></element> 
+
+            ♦ ng-if = "" : Öğeye verilen şart sağlanmassa öğeyi gizlemek yerine DOM yapısından tamamen kaldırır. Şart sağlanırsa yeniden eklenir.
+
+              SYNTAX: <element ng-if="expression"></element> 
+
+              NOT: startNumber == 5 && ifadesiyle startNumber değişkenin 5 olması durumunda bu style dosyasını aktif yapacaktır. 
         -->
 
 
-    <body ng-app="myapp" ng-controller="mycontrol">
-        
+<body ng-app="myapp" ng-controller="mycontrol">
 
-    
-        <!-- ng-style = "" ile stil biçimlendirmesi bir koşula atanabilmektedir -->
-         <div ng-style = " startNumber == 5 && 
+
+    <!-- ng-style = "" ile stil biçimlendirmesi bir koşula bağlandı -->
+    <div ng-style=" startNumber == 5 && 
          { 
              'color':'White',
              'background':'red',
@@ -65,38 +80,44 @@
              'font-family': 'Verdana'
 
         }" class="myclass">{{startNumber}}</div>
-            <br>
-       
-         <button ng-click="startNumber = startNumber + 1">+1</button>
-         <button ng-click="startNumber = startNumber - 1">-1</button>
+    <br>
+
+    <!-- Butonların ng-click direktifinde sayı arttırma ve azaltma kodu yazıldı -->
+    <button ng-click="startNumber = startNumber + 1">+1</button>
+    <button ng-click="startNumber = startNumber - 1">-1</button>
 
 
-         <br><br>
+    <br>
+    <br>
 
 
-         <!-- HTML elemenleri ng-show ve ng-hide ile ekranda gösterilip, gösterilmemesi sağlanır veya şarta bağlanabilmektedir. -->
-         <div ng-show="false">Bu bir yazı örneğidir!</div>
-         <div ng-hide="true">Bu bir yazı örneğidir!</div>
+    <!-- HTML elemenleri ng-show ve ng-hide ile ekranda gösterilip, gösterilmemesi sağlanır veya şarta bağlanabilmektedir -->
+    <div ng-show="false">Bu bir yazı örneğidir!</div>
+    <div ng-hide="true">Bu bir yazı örneğidir!</div>
 
-         <!-- Controller alanında tanımlanmış bir ifadeye görede koşullar koyulabilmtekdir. -->
-         <div ng-show="startNumber==10">Maksimum Sayıya ulaşıldı</div>
-         
-         <br><br>
+    <!-- Controller alanında tanımlanmış bir ifadeye görede koşullar koyulabilmtekdir -->
+    <div ng-show="startNumber==10">Maksimum Sayıya ulaşıldı</div>
 
-         <hr>
+    <br>
+    <br>
 
-         <br><br>
+    <hr>
 
-         <button ng-click="eylem()">Göster / Gizle</button> --> {{durum}}
-         <div ng-show="durum">Bu gizlenebilen yazı örneğidir!</div>
-        
-         <!-- 
+    <br>
+    <br>
+
+    <!-- Butonun ng-click direktifine Controller alanında tanımalanan fonksiyon gönderildi -->
+    <button ng-click="hideShowFunction()">Göster / Gizle</button> --> {{durum}}
+    <div ng-show="durum">Bu gizlenebilen yazı örneğidir!</div>
+
+    <!-- 
              ng-show ve ng-hide ile display:none üzerinde görüntüleme işleri yaparken,
              ng-if ise kod üzerinde işlemler yapılmaktadır.
         -->
 
-         <div ng-if="durum">Bu gizlenebilen yazı örneğidir!</div>
+    <div ng-if="durum">Bu gizlenebilen yazı örneğidir!</div>
 
 
-    </body>
+</body>
+
 </html>

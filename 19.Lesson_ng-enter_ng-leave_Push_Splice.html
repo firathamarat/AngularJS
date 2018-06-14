@@ -1,33 +1,34 @@
-    <!DOCTYPE html>
-    <html lang="tr">
+<!DOCTYPE html>
+<html lang="tr">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>19.Lesson_ng-enter_ng-leave_Push_Splice</title>
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular-animate.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>19.Lesson_ng-enter_ng-leave_Push_Splice</title>
 
-        <script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
 
-        
-            // ***NOT: Animasyon kullanabilmek için .JS dosyası eklenmeli ve ngAnimate alanı yazılmalıdır.
-            var ControllerExample = angular.module("myapp", ['ngAnimate']);
-            ControllerExample.controller("mycontrol", function( $scope ){
+    <!-- Animasyon özelliklerini kullanabilmek için .JS dosyası eklenmeli ve ngAnimate alanı yazılmalıdır -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular-animate.js"></script>
+
+    <script>
+
+
+        var ControllerExample = angular.module("myapp", ['ngAnimate']);
+        ControllerExample.controller("mycontrol", function ($scope) {
 
 
             //ng-keyup ="" : sayesinde input alanında klavyeden bir tuşa basıldığında changeFunction'u çalışacaktır
-            $scope.changeFunction = function(){
+            $scope.changeFunction = function () {
 
-                //model adı "insertNumber" olan Input değeri kendisiyle çarpıldı
+                //model adı "insertNumber" olan Input'un değeri kendisiyle çarpıldı
                 $scope.deger = $scope.insertNumber * $scope.insertNumber;
 
             }
 
 
             //"enter" tuşu ile aktifleşen fonksiyon SeriNumber parametresi ile gelen değeri uyarı biçiminde ekranda göstermektedir
-            $scope.enterFunction = function(SeriNumber){
+            $scope.enterFunction = function (SeriNumber) {
                 alert("Yazılmış olan seri numarası: " + SeriNumber);
             }
 
@@ -37,29 +38,30 @@
 
 
             //Input alanına yazılan değeri veriler dizisine push ettikten sonra textfield alanı temizlendi
-            $scope.insertFunction = function(textfield){
-                
+            $scope.insertFunction = function (textfield) {
+
                 $scope.veriler.push($scope.textfield);
-                $scope.textfield="";
+                $scope.textfield = "";
 
             }
 
             //($index) parametresi ile gelen değer sayesinde silme işlemi gerçekleştirilir
-            $scope.deleteFunction = function(index){
-                $scope.veriler.splice(index,1);
+            $scope.deleteFunction = function (index) {
+                $scope.veriler.splice(index, 1);
             }
 
 
-            });
-        </script>
+        });
+    </script>
 
 
 
     <style>
-    
+        /* style tanımlamaları gerçekleştirildi */
+
         .ng-enter {
             transition: all 0.5s;
-            margin-left:100px;
+            margin-left: 100px;
             opacity: 0;
         }
 
@@ -76,55 +78,53 @@
         .ng-leave-active {
             opacity: 0;
         }
-
     </style>
-      
+
+</head>
 
 
-    </head>
-
-
-    <!--
+<!--
        ng-keyup ="" : Yönergesi, klavye belirli HTML elemanın üzerinde kullanıldığında ne yapılacağını belirtir.
+
+       SYNTAX:
+       <element ng-keyup="expression"></element>
 
     -->
 
-    
-    <body ng-app="myapp" ng-controller="mycontrol">
 
-        <!-- Input alanı içinde klavyeden bir tuşa basıldığında changeFunction'u çağrıldı -->
-        Karesi alınacak sayı: 
-        <input type="text" ng-model="insertNumber" ng-keyup="changeFunction()" size=10 >
-        
-        <!-- deger değişkeni bir değer taşıyorsa görünsün koşulu girildi ve expressions ile gösterildi -->
-        <span ng-show="deger">{{deger}}</span>
-        <!-- Not: ng-show ile deger değişkeni bir değer taşıyorsa ekranda gösterilmektedir -->
+<body ng-app="myapp" ng-controller="mycontrol">
 
+    <!-- Input alanı içinde klavyeden bir tuşa basıldığında changeFunction'u çağrıldı -->
+    Karesi alınacak sayı:
+    <input type="text" ng-model="insertNumber" ng-keyup="changeFunction()" size=10>
 
-        <hr>
+    <!-- deger değişkeni bir değer taşıyorsa görünsün koşulu girildi ve expressions ile gösterildi -->
+    <span ng-show="deger">{{deger}}</span>
 
 
-        <!-- İlgili Input nesnesinin içinde "enter" tuşuna basıldığında enterFunction çalıştırıldı ve parametre olarak SeriNumber değeri gönderildi -->
-        Seri Numarası: <input type="text" ng-model="SeriNumber" ng-keyup="$event.keyCode == 13 ? enterFunction(SeriNumber):null" size=10>
-
-    
-        <hr><br>
+    <hr>
 
 
-        <!-- ng-keyup özelliği kullanılarak "enter tuşuna basıldığında input alanındaki değeri textfield ile insertFunction fonksiyonuna göndermekedir "-->
-        <input type="text" ng-model="textfield" ng-keyup="$event.keyCode == 13 ? insertFunction(textfield):null" size=10 placeholder="Ekle">
-        <input type="text" ng-model="searchField" size=10 placeholder="Ara">
-
-        <ul>
-            <li ng-repeat="veri in veriler | filter : searchField"><a ng-click="deleteFunction($index)"> X </a> - {{veri}}
-            </li>
-        </ul>
+    <!-- İlgili Input nesnesinin içinde "enter" tuşuna basıldığında enterFunction çalıştırıldı ve parametre olarak SeriNumber değeri gönderildi -->
+    Seri Numarası:
+    <input type="text" ng-model="SeriNumber" ng-keyup="$event.keyCode == 13 ? enterFunction(SeriNumber):null" size=10>
 
 
-        <!-- ANİMASYON ADIMI  
-             head bölümünün içine eklenen style taglarının arasına yazılan ng-enter ve ng-leave ile eklemelerde ve çıkarmalarda başlangıç ve bitiş animasyonları css ile yaratabilirsiniz
-        -->
-        
+    <hr>
+    <br>
 
-    </body>
+
+    <!-- ng-keyup özelliği kullanılarak "enter tuşuna basıldığında input alanındaki değeri textfield ile insertFunction fonksiyonuna göndermekedir "-->
+    <input type="text" ng-model="textfield" ng-keyup="$event.keyCode == 13 ? insertFunction(textfield):null" size=10 placeholder="Ekle">
+    <input type="text" ng-model="searchField" size=10 placeholder="Ara">
+
+    <ul>
+        <li ng-repeat="veri in veriler | filter : searchField">
+            <a ng-click="deleteFunction($index)"> X </a> - {{veri}}
+        </li>
+    </ul>
+
+
+</body>
+
 </html>

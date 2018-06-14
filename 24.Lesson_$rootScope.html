@@ -1,51 +1,52 @@
-    <!DOCTYPE html>
-    <html lang="tr">
+<!DOCTYPE html>
+<html lang="tr">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>24.Lesson_$rootScope</title>
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24.Lesson_$rootScope</title>
 
-        <script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
 
-            var ControllerExample = angular.module("myapp", []);
+    <script>
+
+        var ControllerExample = angular.module("myapp", []);
 
 
-            ControllerExample.controller("mycontrol", function( $scope, $rootScope ){
+        ControllerExample.controller("mycontrol", function ($scope, $rootScope) {
 
-                //Tüm kontrol alanlarından ulaşılmak isteniyorsa rootscope kullanılmalıdır.
-                $rootScope.text1 = "mycontrol tarafından yönetilen alan";
-                
-            });
+            //Tüm kontrol alanlarından ulaşılmak isteniyorsa rootscope kullanılmalıdır
+            $rootScope.text1 = "mycontrol tarafından yönetilen alan";
 
-            ControllerExample.controller("mycontrol2", function( $scope, $rootScope ){
+        });
 
-                //mycontrol alanında tanımlanan $rootScope.text1 değişkeni değerini mycontrol2 alanında tanımlanan $scope.text2 değişkenine atadık
-                $scope.text2 = $rootScope.text1;
+        ControllerExample.controller("mycontrol2", function ($scope, $rootScope) {
 
-            });
+            //mycontrol alanında tanımlanan $rootScope.text1 değişkeni değerini mycontrol2 alanında tanımlanan $scope.text2 değişkenine atandı
+            $scope.text2 = $rootScope.text1;
 
-           
-        </script>
+        });
 
-    </head>
 
-    <!--
+    </script>
+
+</head>
+
+<!--
         $scope ifadesi sadece bulunduğu controller'ın altında kullanılmaktadır. 
         $rootScope ile aynı değişkenleri farklı controllerlarda kullanılabilmektedir.
     -->
-   
-    <body ng-app="myapp">
-     
-        <div ng-controller="mycontrol">
-            {{text1}}
-        </div>
 
-        <div ng-controller="mycontrol2">
-            {{text2}}
-        </div>
+<body ng-app="myapp">
 
-    </body>
+    <div ng-controller="mycontrol">
+        {{text1}}
+    </div>
+
+    <div ng-controller="mycontrol2">
+        {{text2}}
+    </div>
+
+</body>
+
 </html>

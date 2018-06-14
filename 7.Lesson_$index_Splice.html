@@ -1,48 +1,58 @@
-    <!DOCTYPE html>
-    <html lang="tr">
+<!DOCTYPE html>
+<html lang="tr">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>7.Lesson_$index_Splice</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7.Lesson_$index_Splice</title>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
 
-        <script>
-        
-            var ControllerExample = angular.module("myapp", []);
-            ControllerExample.controller("mycontrol", function( $scope ){
+    <script>
+
+        var ControllerExample = angular.module("myapp", []);
+        ControllerExample.controller("mycontrol", function ($scope) {
 
 
             //Gunler adında haftanın günlerinden oluşan dizi tanımlandı
             $scope.Gunler = ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar"];
 
-            $scope.deleteFunction = function( alinanIndexNum ){
+            $scope.deleteFunction = function (alinanIndexNum) {
 
-                //splice diziden elemen silmek için kullanılmaktadır
+                //splice diziden elemen silmek için kullanılmaktadır, alinanIndexNum değerinden itibaren 1 karakter silinsin anlamındadır
                 $scope.Gunler.splice(alinanIndexNum, 1)
 
             }
 
-            });
+            $scope.updateFunction = function () {
 
-        </script>
+                $scope.Gunler.splice(2, 0, "Tatil 1", "Tatil 2");
+            }
 
-    
-    </head>
+        });
 
-  
-    <body ng-app="myapp" ng-controller="mycontrol">
+    </script>
 
-        <!-- $index ile ilgili dizinin index sırası alınabilmektedir  -->
-        
-        <ul>
-            <li ng-repeat="Gun in Gunler">
-                <a ng-click="deleteFunction($index)">X</a> -
-                {{Gun}}
-            </li>
-        </ul>
 
-     
-    </body>
+</head>
+
+
+<body ng-app="myapp" ng-controller="mycontrol">
+
+    <!-- $index ile ilgili dizinin index sırası alınabilmektedir  -->
+
+    <ul>
+        <li ng-repeat="Gun in Gunler">
+
+            <!-- ng-repat direktifinin $index değeri parametre olarak deleteFunction fonksiyonuna yollandı -->
+            <a ng-click="deleteFunction($index)">X</a> - {{Gun}}
+
+        </li>
+    </ul>
+
+    <!-- Butonun ng-click direktifine updateFunction fonksiyonu yazıldı -->
+    <button ng-click="updateFunction()">Tatil Ekle</button>
+
+</body>
+
 </html>

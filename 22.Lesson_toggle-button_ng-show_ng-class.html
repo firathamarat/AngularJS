@@ -1,55 +1,54 @@
-    <!DOCTYPE html>
-    <html lang="tr">
+<!DOCTYPE html>
+<html lang="tr">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>22.Lesson_toggle-button_ng-show_ng-class</title>
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>22.Lesson_toggle-button_ng-show_ng-class</title>
 
-        <script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
 
-            var ControllerExample = angular.module("myapp", []);
-            ControllerExample.controller("mycontrol", function( $scope ){
+    <script>
 
-                //Default değer vermek için state adında bir değişken declare edildi
-                $scope.state=true;
+        var ControllerExample = angular.module("myapp", []);
+        ControllerExample.controller("mycontrol", function ($scope) {
 
-            });
+            //Default değer vermek için state adında bir değişken declare edildi
+            $scope.state = true;
 
-        </script>
+        });
 
-        <style>
-        
-            /* toggle-button hareketlerine göre renk stilleri tanımlandı */
+    </script>
 
-            .red {
-                color:brown;
-                font-family:Verdana, Geneva, Tahoma, sans-serif;
-            }
+    <style>
+        /* toggle-button hareketlerine göre renk stilleri tanımlandı */
 
-            .green {
-                color: green;
-                font-family: Verdana, Geneva, Tahoma, sans-serif;
-            }
-            
-        </style>
+        .red {
+            color: brown;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .green {
+            color: green;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+    </style>
 
 
-    </head>
+</head>
 
-    <body ng-app="myapp" ng-controller="mycontrol">
+<body ng-app="myapp" ng-controller="mycontrol">
 
-        <!-- Oluşturulan butonun ng-click özelliğinde state durumuna state durumunun tam tersi atandı -->
-        <button ng-click="state=!state">
-            <span ng-show="state">ON</span>
-            <span ng-show="!state">OFF</span>
-        </button>
+    <!-- Oluşturulan butonun ng-click özelliğinde state durumuna state durumunun tam tersi atandı -->
+    <button ng-click="state=!state">
+        <span ng-show="state">ON</span>
+        <span ng-show="!state">OFF</span>
+    </button>
 
-        <!-- ng-show ile ilgili span nesnenin ekranda görünüp görünmeyeceği, ng-class ile belirtilen koşula göre stil atalamarı gerçekleştirildi -->
-        <span ng-show="state" ng-class="{green:state}">Bildirimleri ekranda görüntülemeyi aktifleştirdiniz.</span>
-        <span ng-show="!state" ng-class="{red:!state}">Bildirimleri ekranda görüntülemeyi kapattınız.</span>
+    <!-- ng-show ile ilgili span nesnenin ekranda görünüp görünmeyeceği, ng-class ile belirtilen koşula göre stil atamaları gerçekleştirildi -->
+    <span ng-show="state" ng-class="{green:state}">Bildirimleri ekranda görüntülemeyi aktifleştirdiniz.</span>
+    <span ng-show="!state" ng-class="{red:!state}">Bildirimleri ekranda görüntülemeyi kapattınız.</span>
 
-    </body>
+</body>
+
 </html>

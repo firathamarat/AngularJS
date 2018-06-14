@@ -1,120 +1,136 @@
-    <!DOCTYPE html>
-    <html lang="tr">
+<!DOCTYPE html>
+<html lang="tr">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>25.Lesson_digest()-apply()</title>
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>25.Lesson_digest()-apply()</title>
 
-        <script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
 
-            var ControllerExample = angular.module("myapp", []);
-            ControllerExample.controller("mycontrol", function( $scope, $rootScope ){
+    <script>
 
-            
-            });
+        var ControllerExample = angular.module("myapp", []);
+        ControllerExample.controller("mycontrol", function ($scope, $rootScope) {
 
 
-            /*
-                AngularJS ile HTML etiketlerini yeni özellikler ile genişletmek mümkündür. AngularJS'de bu yeni özellikler Directive olarak adlandırılır.
-                Birden fazla Element, Class ve Attribute directive oluşturulabilmektedir.
-                İsimlendirme yaparken büyük harf içermemesine ve (-) tire kullanılmamasına dikkat edilmelidir.
-            */
+        });
 
 
-            ControllerExample.directive("elementmydirective", function(){
+        ControllerExample.directive("hello", function () {
 
-                //Geriye değern döndürüyor
-                return {
+            return {
 
-                    restrict: 'E', // E : Element için, C : Class için, A ise Attribute için kısıtlama getirmektedir
-                    
-                    template: '<div class="mydiv">First Element Mydirective Example</div>',
-        
-                }
+                template: '<div class="mydiv">Merhaba AngularJS Directive</div>',
 
-            });
+            }
+        })
 
 
+        ControllerExample.directive("elementmydirective", function () {
 
-            ControllerExample.directive("classmydirective", function(){
+            //Geriye değern döndürüyor
+            return {
 
-                //Geriye değern döndürüyor
-                return {
+                restrict: 'E', // E : Element için, C : Class için, A ise Attribute için kısıtlama getirmektedir
 
-                    restrict: 'C', // E : Element için, C : Class için, A ise Attribute için kısıtlama getirmektedir
-                    
-                    template: '<div class="mydiv">First Class Mydirective Example</div>',
+                template: '<div class="mydiv">First Element Mydirective Example</div>',
 
-                }
+            }
 
-            });
+        });
 
-            
-            
-            ControllerExample.directive("atrributemydirective", function(){
 
-                //Geriye değern döndürüyor
-                return {
 
-                    link: function ( scope, element, attrs ){
+        ControllerExample.directive("classmydirective", function () {
 
-                        restrict: 'A', // E : Element için, C : Class için, A ise Attribute için kısıtlama getirmektedir
+            return {
+
+                restrict: 'C', // E : Element için, C : Class için, A ise Attribute için kısıtlama getirmektedir
+
+                template: '<div class="mydiv">First Class Mydirective Example</div>',
+
+            }
+
+        });
+
+
+
+        ControllerExample.directive("atrributemydirective", function () {
+
+            return {
+
+                link: function (scope, element, attrs) {
+
+                    restrict: 'A', // E : Element için, C : Class için, A ise Attribute için kısıtlama getirmektedir
 
                         //element.css ile style biçimlendirmesi yapıldı
-                        element.css({'background-color':'brown', 'color': 'white'});
+                        element.css({ 'background-color': 'brown', 'color': 'white' });
 
                         //substring ile oluşturulan atrribute'den gelen değerle metnin belli bir kısmı gösterildi
                         element.html(element.html().substring(0, attrs.atrributemydirective));
 
-                    }
-
                 }
 
-            })
-
-
-        </script>
-
-        
-        <style>
-
-            /* mydiv adında style class declare edildi */
-            .mydiv {
-                background-color: brown;
-                color:white;
-                height: 50px;
-                width: 250px;
-                text-align: center;
-                font-size: 20px;
-                font-family: Verdana, Geneva, Tahoma, sans-serif;
             }
 
-        </style>
-
-    </head>
-   
-    <body ng-app="myapp" ng-controller="mycontrol">
+        })
 
 
-        Element Directive Field
-        <elementmydirective></elementmydirective>
-
-        <hr><!-- -->
-
-        Class Directive Field
-        <div class="classmydirective"></div>
-
-        <hr><!-- -->
-
-        Atrribute Directive
-        <div atrributemydirective="10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean facilisis felis lectus, non accumsan tellus placerat quis. Mauris luctus risus quis consectetur vulputate. Maecenas in odio eu metus cursus vestibulum. </div>
-        <div atrributemydirective="25">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean facilisis felis lectus, non accumsan tellus placerat quis. Mauris luctus risus quis consectetur vulputate. Maecenas in odio eu metus cursus vestibulum. </div>
-        <div atrributemydirective="50">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean facilisis felis lectus, non accumsan tellus placerat quis. Mauris luctus risus quis consectetur vulputate. Maecenas in odio eu metus cursus vestibulum. </div>
-        <div atrributemydirective="100">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean facilisis felis lectus, non accumsan tellus placerat quis. Mauris luctus risus quis consectetur vulputate. Maecenas in odio eu metus cursus vestibulum. </div>
+    </script>
 
 
-    </body>
+    <style>
+        /* mydiv adında style class declare edildi */
+
+        .mydiv {
+            background-color: brown;
+            color: white;
+            height: 50px;
+            width: 250px;
+            text-align: center;
+            font-size: 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+    </style>
+
+</head>
+
+<!-- 
+
+    AngularJS ile HTML etiketlerini yeni özellikler ile genişletmek mümkündür. AngularJS'de bu yeni özellikler Directive olarak adlandırılır.
+    Birden fazla Element, Class ve Attribute directive oluşturulabilmektedir.
+    İsimlendirme yaparken büyük harf içermemesine ve (-) tire kullanılmamasına dikkat edilmelidir.
+
+-->
+
+<body ng-app="myapp" ng-controller="mycontrol">
+
+    <hello></hello>
+
+
+    <br> Element Directive Field
+    <elementmydirective></elementmydirective>
+
+    <hr>
+
+
+    Class Directive Field
+    <div class="classmydirective"></div>
+
+    <hr>
+
+
+    Atrribute Directive
+    <div atrributemydirective="10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean facilisis felis lectus, non accumsan tellus placerat
+        quis. Mauris luctus risus quis consectetur vulputate. Maecenas in odio eu metus cursus vestibulum. </div>
+    <div atrributemydirective="25">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean facilisis felis lectus, non accumsan tellus placerat
+        quis. Mauris luctus risus quis consectetur vulputate. Maecenas in odio eu metus cursus vestibulum. </div>
+    <div atrributemydirective="50">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean facilisis felis lectus, non accumsan tellus placerat
+        quis. Mauris luctus risus quis consectetur vulputate. Maecenas in odio eu metus cursus vestibulum. </div>
+    <div atrributemydirective="100">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean facilisis felis lectus, non accumsan tellus placerat
+        quis. Mauris luctus risus quis consectetur vulputate. Maecenas in odio eu metus cursus vestibulum. </div>
+
+</body>
+
 </html>

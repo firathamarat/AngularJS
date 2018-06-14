@@ -1,51 +1,54 @@
-    <!DOCTYPE html>
-    <html lang="tr">
+<!DOCTYPE html>
+<html lang="tr">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>10.Lesson_ng-include</title>
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10.Lesson_ng-include</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+
+    <script>
+
+        var ControllerExample = angular.module("myapp", []);
+        ControllerExample.controller("mycontrol", function ($scope) {
+
+            //Sayfa ifade alanı default myFile.html olarak ayarlandı
+            $scope.sayfa = "myFile.htm";
+
+        });
+    </script>
+
+</head>
 
 
-        <script>
-        
-            var ControllerExample = angular.module("myapp", []);
-            ControllerExample.controller("mycontrol", function( $scope ){
+<!--
+        ♦ ng-include = "" : Direktifi ile harici HTML sayfaları mevcut HTML sayfasına dahil edilmektedir.
+          Kısacası sürekli tekrarlanan içerikleri farklı sayfalardan alıp başka sayfaya dahil edebilirsiniz.
+          Örneğin satış sayfası tasarımı yaparken bir sonraki adıma geçerken site yenilenmeden bir sonraki adıma ait html içeriğini getirebilirsiniz.
 
-               //Sayfa ifade alanı default myFile.html olarak ayarlandı
-               $scope.sayfa ="myFile.htm"; 
-         
-            });
-        </script>
+          SYNTAX:
+          <element ng-include="filename" onload="expression" autoscroll="expression" ></element>
+          <ng-include src="filename" onload="expression" autoscroll="expression" ></ng-include>
 
-    </head>
-
-
-        <!--
-            ♦ ng-include = "" : Direktifi ile harici HTML sayfaları mevcut HTML sayfasına dahil edilmektedir.
-            Kısacası sürekli tekrarlanan içerikleri farklı sayfalara alıp bunları dahil edebilirsiniz.
-            Örneğin satış sayfası tasarımı yaparken bir sonraki adıma geçerken site yenilenmeden bir sonraki adıma ait html içeriğini getirebilirsiniz.
-
-            ***Not: Yazılan dosya yolu '' içerisinde yazılmalıdır ve bir sunucu üzerinde çalışır.
+         NOT: Yazılan dosya yolu '' içerisinde yazılmalıdır ve bir sunucu üzerinde çalışır.
         -->
 
-    
-    <body ng-app="myapp" ng-controller="mycontrol">
 
-       
-        <!-- Sayfa yüklenirken myFile.htm sayfasındaki içeriği bu index sayfasına getirecektir -->
-        <div ng-include="'myFile.htm'"></div>
+<body ng-app="myapp" ng-controller="mycontrol">
 
 
-        <!-- Dinaik olarak butonlar yardımı ile sayfa içerikleri arasında gezinmek için ise: bir default $scope değeri tanımlanıp değiştirilmelidir -->
+    <!-- Sayfa yüklenirken myFile.htm sayfasındaki içeriği mevcut index sayfasına getirecektir -->
+    <div ng-include="'myFile.htm'"></div>
 
-        <button ng-click="sayfa='myFile.htm'">Sayfa 1</button>
-        <button ng-click="sayfa='myFile2.htm'">Sayfa 2</button>
+    <!-- Dinaik olarak butonlar yardımı ile sayfa içerikleri arasında gezinmek için ise: bir default $scope değeri tanımlanıp değiştirilmelidir -->
 
-        <div ng-include="sayfa"></div>
+    <button ng-click="sayfa='myFile.htm'">Sayfa 1</button>
+    <button ng-click="sayfa='myFile2.htm'">Sayfa 2</button>
 
-        
-    </body>
+    <div ng-include="sayfa"></div>
+
+
+</body>
+
 </html>

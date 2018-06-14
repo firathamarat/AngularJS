@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>31.Lesson_ng-show_news-slider</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+
+    <script>
+
+        var ControllerExample = angular.module("myapp", []);
+        ControllerExample.controller("mycontrol", function ($scope, $rootScope) {
+
+            //Haber durumunu tutacak state adında alan oluşturulup default değeri 1 olarak atandı
+            $scope.state = 1;
+
+        });
+    </script>
+
+
+    <style>
+        /* style tanımlamaları gerçekleştirildi */
+
+        .content {
+            width: 500px;
+            height: 100px;
+            margin: 50px 0px 50px 10px;
+            padding: 20px;
+            background-color: brown;
+            color: white;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-align: justify;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            background-color: rgb(39, 39, 39);
+            color: white;
+            margin-bottom: 10px;
+            width: 27px;
+            height: 27px;
+            text-align: center;
+            line-height: 27px;
+            cursor: pointer;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+    </style>
+
+</head>
+
+
+<body ng-app="myapp" ng-controller="mycontrol">
+
+    <!-- Daha düzgün bir görüntü amacıyla tablo yapısı kullanıldı -->
+
+    <table>
+
+        <tr>
+            <td>
+
+                <ul>
+                    <li ng-click="state = 1">1</li>
+                    <li ng-click="state = 2">2</li>
+                    <li ng-click="state = 3">3</li>
+                    <li ng-click="state = 4">4</li>
+                </ul>
+
+            </td>
+
+            <td>
+
+                <!-- ilgili divlerde ng-show özelliği kullanarak ekranda görüntülenme ayarları verildi -->
+
+                <div class="content" ng-show="state==1">
+                    Dünyanın önde gelen akıllı telefon üreticileri, piyasaya çok sonradan gelen Huawei’nin nefesini ensesinde hissetmeye başladı.
+                    Çünkü Huawei, yakaladığı başarılı istatistikler ile birlikte artık dünyada ki en çok satış yapan telefon
+                    üreticileri arasında geliyor.
+                </div>
+
+                <div class="content" ng-show="state==2">
+                    Robotların kullanım alanlarının her geçen gün gelişeceğinden sürekli bahsediyoruz. Fransız şirket Exotic Solutions ise depolarda
+                    çalışan yeni robotlar üretmeye başlamış.
+                </div>
+
+                <div class="content" ng-show="state==3">
+                    22 Kasım'da raflarda yerini alacak Hitman 2, tanıtım videosu ile büyüledi. Sunumun hemen ardından ön siparişe sunulan oyun,
+                    üç farklı platformda oynanabilecek.
+                </div>
+
+                <div class="content" ng-show="state==4">
+                    Tokyo Teknoloji Enstitüsü’nün önde gelen bilim insanları, daha hassas bir ışınım iletisiyle 5G frekansının daha güçlü, daha
+                    hızlı ve daha güvenilir bir şekilde iletilmesini sağladılar.
+                </div>
+
+            </td>
+        </tr>
+
+    </table>
+
+
+</body>
+
+</html>

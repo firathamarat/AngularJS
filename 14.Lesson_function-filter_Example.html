@@ -1,128 +1,123 @@
-    <!DOCTYPE html>
-    <html lang="tr">
+<!DOCTYPE html>
+<html lang="tr">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>13.Lesson_function-filter</title>
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13.Lesson_function-filter</title>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
 
-        <script>
-        
-            var ControllerExample = angular.module("myapp", []);
-            ControllerExample.controller("mycontrol", function( $scope ){
+    <script>
 
-
-                //mailler adında bir dizi tanımlandı
-                $scope.mailler = [
-                    {"mesaj": "Yarın akşam kaçta buluşuyoruz?", "durum":false},
-                    {"mesaj": "Tamam saat 9'da orada olurum", "durum":false},
-                    {"mesaj": "Bu konu hakkında daha fazla detay verebilir misin?", "durum":false},
-                    {"mesaj": "Belgeleri şimdi size yolladım.", "durum":false},
-                    {"mesaj": "Eksik olan belgeler şunlar:", "durum":false},
-                    {"mesaj": "Toplantı saat 12'ye ertelendi.", "durum":false},
-                    {"mesaj": "Uygulamanın kurulumu tamamlandı.", "durum":false}
-                     ]; 
+        var ControllerExample = angular.module("myapp", []);
+        ControllerExample.controller("mycontrol", function ($scope) {
 
 
-                //Silinenler adında boş bir dizi oluşturuldu
-                $scope.silinenler = []
+            //mailler adında bir dizi tanımlandı
+            $scope.mailler = [
+                { "mesaj": "Yarın akşam kaçta buluşuyoruz?", "durum": false },
+                { "mesaj": "Tamam saat 9'da orada olurum", "durum": false },
+                { "mesaj": "Bu konu hakkında daha fazla detay verebilir misin?", "durum": false },
+                { "mesaj": "Belgeleri şimdi size yolladım.", "durum": false },
+                { "mesaj": "Eksik olan belgeler şunlar:", "durum": false },
+                { "mesaj": "Toplantı saat 12'ye ertelendi.", "durum": false },
+                { "mesaj": "Uygulamanın kurulumu tamamlandı.", "durum": false }
+            ];
 
 
-                $scope.SecilenSil = function(){
+            //Silinenler adında boş bir dizi oluşturuldu
+            $scope.silinenler = []
+
+
+            $scope.SecilenSil = function () {
                 //Silme işlemi için bir dizi oluşturulmak gerekmektedir.
-                
+
                 //filter sayesinde mailler dizisi tek tek taranacak ve durum alanı true değeri taşıyan alanlar silinenlere aktarılacak
-                $scope.silinenler = $scope.mailler.filter( function (a){
+                $scope.silinenler = $scope.mailler.filter(function (a) {
 
                     return a.durum == true;
 
                 });
 
-                 $scope.mailler = $scope.mailler.filter( function (a){
+                $scope.mailler = $scope.mailler.filter(function (a) {
 
                     return a.durum == false;
 
                 });
 
 
-                }
+            }
 
-                $scope.SecmeIslemi = function(){
+            $scope.SecmeIslemi = function () {
+                //mailler dizisindeki indexlerin durum değerleri true yapılmalıdır
 
-                    //mailler dizisindeki indexlerin durum değerleri true yapılmalıdır
-                    
-                    //mailler dizisindeki mesajların toplamı mesajSayisi değişkenine atandı
-                    $scope.mesajSayisi = $scope.mailler.length;
+                //mailler dizisindeki mesajların toplamı mesajSayisi değişkenine atandı
+                $scope.mesajSayisi = $scope.mailler.length;
 
-                    //for döngsüyle işlem yapılıyır
-                    for(baslangicDegeri = 0 ; baslangicDegeri < $scope.mesajSayisi; baslangicDegeri++){
-                        
-                        $scope.mailler[baslangicDegeri].durum = true;
+                for (baslangicDegeri = 0; baslangicDegeri < $scope.mesajSayisi; baslangicDegeri++) {
 
-                    }
-
-
-                }
-                    
-                $scope.SecimKaldir = function(){
-
-                     //for döngsüyle işlem yapılıyır
-                     for(baslangicDegeri = 0 ; baslangicDegeri < $scope.mesajSayisi; baslangicDegeri++){
-                        
-                        $scope.mailler[baslangicDegeri].durum = false;
-
-                    }
+                    $scope.mailler[baslangicDegeri].durum = true;
 
                 }
 
-                    
+            }
 
-            });
-        </script>
+            $scope.SecimKaldir = function () {
+
+                //for döngsüyle işlem yapılıyır
+                for (baslangicDegeri = 0; baslangicDegeri < $scope.mesajSayisi; baslangicDegeri++) {
+
+                    $scope.mailler[baslangicDegeri].durum = false;
+
+                }
+
+            }
 
 
-    </head>
+        });
+    </script>
 
 
-    
-    <body ng-app="myapp" ng-controller="mycontrol">
+</head>
 
 
-        <button ng-click="SecilenSil()">SİL</button>
-        <button ng-click="SecmeIslemi()">HEPSİNİ SEÇ</button>
-        <button ng-click="SecimKaldir()">SEÇİMİ KALDIR</button>
+<body ng-app="myapp" ng-controller="mycontrol">
 
-        <hr>
 
-        <div ng-show="mailler.length == 0">Tüm görevleri yerine getirdin!</div>
+    <button ng-click="SecilenSil()">SİL</button>
+    <button ng-click="SecmeIslemi()">HEPSİNİ SEÇ</button>
+    <button ng-click="SecimKaldir()">SEÇİMİ KALDIR</button>
+
+
+    <hr>
+
+
+    <div ng-show="mailler.length == 0">Tüm görevleri yerine getirdin!</div>
+
+    <ul>
+        <li ng-repeat="mail in mailler">
+            <input type="checkbox" ng-model="mail.durum"> {{mail.mesaj}}
+        </li>
+    </ul>
+
+
+    <hr>
+
+
+    <div ng-show="silinenler.length>0">
+
+        <p>Silinen Mesajlar:</p>
 
         <ul>
-            <li ng-repeat="mail in mailler">
-
-                <input type="checkbox" ng-model="mail.durum">
-                {{mail.mesaj}}</li>
-
+            <li ng-repeat="silinen in silinenler">
+                {{silinen.mesaj}}
+            </li>
         </ul>
 
+    </div>
 
-        <hr>
 
+</body>
 
-        <div ng-show="silinenler.length>0">
-
-            <p>Silinen Mesajlar:</p>
-            
-            <ul>
-                <li ng-repeat="silinen in silinenler">
-                    {{silinen.mesaj}}
-                </li>
-            </ul>
-
-        </div>
-     
-        
-    </body>
 </html>

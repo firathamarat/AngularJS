@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>32.Lesson_special-filter</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+
+    <!-- Controller dosyası external olarak  dışarıdan import edildi -->
+    <script src="z-js/32-lesson.js"></script>
+
+    <style>
+        /* ul ve span elemanları için style biçimlendirmesi tanımlandı */
+
+        ul {
+            list-style-type: none;
+        }
+
+        span {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: brown;
+            font-size: 10px;
+            font-weight: bold;
+        }
+    </style>
+
+
+</head>
+
+
+<body ng-app="myapp" ng-controller="mycontrol">
+
+    <!-- Farklı alanlarda filter işlemini gerçekleştirmek için Input nesneleri eklendi -->
+    <input type="text" ng-model="searchAll" placeholder="Search All">
+    <input type="text" ng-model="searchFirstname" placeholder="Search Firstname">
+    <input type="text" ng-model="searchLastname" placeholder="Search Lastname">
+    <input type="text" ng-model="searchPhone" placeholder="Search Phone">
+    <input type="text" ng-model="searchCountry" placeholder="Search Country">
+
+
+    <!-- 
+
+        Tüm alanlarda arama yapılmak isteniyorsa nesnenin ng-modelini yazarak, özel bir alanda arama yapılmak isteniyorsa {ilgiliAlan:ng-model} şeklinde ayarlanmalıdır.
+        ng-repeat = "" ile tekrarlanan li nesnesi üzerinde tüm Input alanlarına göre filtreleme yapıldı.
+        
+    -->
+    <ul>
+        <li ng-repeat="employee in employees | filter:searchAll | filter : {firstName:searchFirstname} | filter : {lastName:searchLastname} | filter : {phone:searchPhone} | filter : {country:searchCountry}">{{employee}}</li>
+    </ul>
+
+    <table>
+        <tr>
+            <th width="100">Firstname</th>
+            <th width="100">Lastname</th>
+            <th width="100">Phone</th>
+            <th width="100">Country</th>
+        </tr>
+
+        <tr ng-repeat="employee in employees | filter:searchAll | filter : {firstName:searchFirstname} | filter : {lastName:searchLastname} | filter : {phone:searchPhone} | filter : {country:searchCountry}">
+            <td>{{employee.firstName}}</td>
+            <td>{{employee.lastName}}</td>
+            <td>{{employee.phone}}</td>
+            <td>{{employee.country}}</td>
+
+        </tr>
+    </table>
+
+    <br>
+    <hr>
+    <br>
+
+    <!-- 32-lesson.js dosyasında özel filtreler tanımlayarak aşağıda kullanıldı ve kullanıcı bilgilendirildi -->
+    <ul>
+        <span>specialFilter1
+            <br>firstName alanı "Kenneth" olan değer return = true gösterildi, "Kenneth" olmayanlar ise false ile filtrelendi</span>
+
+        <li ng-repeat="employee in employees | filter : specialFilter1"> {{employee}}</li>
+    </ul>
+
+    <ul>
+        <span>specialFilter2
+            <br>firstName alanı "Kenneth" olan değer return = false ile filtrelendi, "Kenneth" olmayanlar ise true ile gösterildi</span>
+        <li ng-repeat="employee in employees | filter : specialFilter2"> {{employee}}</li>
+    </ul>
+
+
+</body>
+
+</html>

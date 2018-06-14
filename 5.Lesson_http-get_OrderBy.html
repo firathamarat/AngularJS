@@ -1,61 +1,84 @@
-    <!DOCTYPE html>
-    <html lang="tr">
+<!DOCTYPE html>
+<html lang="tr">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>5.Lesson_http-get_OrderBy</title>
-    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5.Lesson_http-get_OrderBy</title>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
 
+    <script>
 
-        <script>
-        
-            var ControllerExample = angular.module("myapp", []);
-            ControllerExample.controller("mycontrol", function( $scope, $http ){
+        var ControllerExample = angular.module("myapp", []);
+        ControllerExample.controller("mycontrol", function ($scope, $http) {
 
-                //$http.get("url").then( successfulFunc, unsuccessfulFunc);
+            //Tarih üzerinde işlemler yapmak için değerler tanımlandı
+            var tarih = new Date();
+            $scope.tarihGoster = tarih.getTime();
 
-                $http.get("https://jsonplaceholder.typicode.com/users").then( function( AlinanDeger ){
+            //$http.get("url").then( successfulFunc, unsuccessfulFunc);
+            $http.get("https://jsonplaceholder.typicode.com/users").then(function (AlinanDeger) {
 
-                    $scope.veriler = AlinanDeger.data;
-                    //Data yazılmaz ise 200 function(d){b||(b=yd(a)); vb bilgilerle birlikte gelir sadece veriler gelsin isteniyorsa data yazılmalıdır.
-
-
-                });
-
+                $scope.veriler = AlinanDeger.data;
+                //Data yazılmaz ise 200 function(d){b||(b=yd(a)); vb bilgilerle birlikte gelir sadece veriler gelsin isteniyorsa data yazılmalıdır.
 
             });
 
-        </script>
+        });
+
+    </script>
 
 
-    </head>
+</head>
 
-    <!--
-        $http : XMLHttpRequest alt yapısını kullanan uzak sunucu ile haberleşmek için kullanılan bir servistir. 
-        Veri gönderme yada veri okuma işlemleri $http ile gerçekleştirilir.
 
-         orderBy: 'id' ile çıkan soruçlar arasında sıralama yapılır. orderBy: '-id' ile ise tersten sıralama gerçekleştirilir.
+<!--
+        
+        ♦ $http : XMLHttpRequest alt yapısını kullanan uzak sunucu ile haberleşmek için kullanılan bir servistir. 
+          Veri gönderme yada veri okuma işlemleri $http ile gerçekleştirilir.
+
+        SYNTAX:
+        $http.get('/someUrl', config).then(successCallback, errorCallback);
+        $http.post('/someUrl', data, config).then(successCallback, errorCallback);
+
+
+        ♦ orderBy: Bir alana göre çıkan sonuçlar arasında sıralama yapmaktadır. orderBy : '-id' ile ise tersten sıralama gerçekleştirilir.
+
+        SYNTAX:
+        {{ orderBy_expression | orderBy : expression : reverse : comparator}}
+
     -->
 
 
-    <body ng-app="myapp" ng-controller="mycontrol">
+<body ng-app="myapp" ng-controller="mycontrol">
 
 
-         
-        <!-- Arama yapabilmek için Input alanı eklendi -->
-         Users Search: <input type="search" ng-model="userSearch">
-        
+    <!-- Arama yapabilmek için Input alanı eklendi -->
+    Users Search:
+    <input type="search" ng-model="userSearch">
 
-        <ul>
-            <li ng-repeat="veri in veriler | filter: userSearch | orderBy: '-id'" style="padding:20px">
-                    {{veri.id}}, {{veri.name}}, {{veri.email}}
-            </li>
-        </ul>
 
-       
+    <ul>
+        <!-- Arama sonuçlarının sıralaması name alanına göre gerçekleştirildi -->
+        <li ng-repeat="veri in veriler | filter: userSearch | orderBy: 'name'" style="padding:20px">
+            {{veri.id}}, {{veri.name}}, {{veri.email}}
+        </li>
+    </ul>
 
-    </body>
+    <hr>
+
+    <!-- Controller alanında tanımlanan tarihGoster değerine göre farklı saat ve tarih filtreleri uygulanabilmektedir -->
+    <b>Tarih ve Saat Filter:</b>
+    <br> {{tarihGoster}}
+    <br> {{tarihGoster | date}}
+    <br> {{tarihGoster | date: 'short'}}
+    <br> {{tarihGoster | date: 'medium'}}
+    <br> {{tarihGoster | date: 'longDate'}}
+    <br> {{tarihGoster | date: 'shortDate'}}
+    <br> {{tarihGoster | date: 'fullDate'}}
+    <br> {{tarihGoster | date: 'shortTime'}}
+
+</body>
+
 </html>

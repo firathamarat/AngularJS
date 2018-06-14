@@ -1,53 +1,65 @@
-    <!DOCTYPE html>
-    <html lang="tr">
+<!DOCTYPE html>
+<html lang="tr">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>13.Lesson_ng-submit</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13.Lesson_ng-submit</title>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
-
-
-        <script>
-        
-            var ControllerExample = angular.module("myapp", []);
-            ControllerExample.controller("mycontrol", function( $scope, $http ){
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
 
 
+    <script>
 
-            $scope.bilgiGonder = function(){
+        var ControllerExample = angular.module("myapp", []);
+        ControllerExample.controller("mycontrol", function ($scope, $http) {
+
+
+
+            $scope.bilgiGonder = function () {
 
                 //$http.post(url).then("Dönencevap")
 
-                $scope.data ={ "userId": 1, "ID":$scope.userID, "MAIL":$scope.userMail};
-                
-                $http.post("https://jsonplaceholder.typicode.com/todos", $scope.data).then( function( donenDeger){
+                $scope.data = { "userId": 1, "ID": $scope.userID, "MAIL": $scope.userMail };
+
+                $http.post("https://jsonplaceholder.typicode.com/todos", $scope.data).then(function (donenDeger) {
 
                     $scope.cevap = donenDeger.data;
 
                 })
 
             }
-               
-            });
-        </script>
+
+        });
+    </script>
 
 
-    </head>
-    
-    <body ng-app="myapp" ng-controller="mycontrol">
+</head>
 
-        <!-- Submit: ng-submit: function -->
-        <form name="myform" ng-submit="bilgiGonder()">
+<!--
 
-            <input type="text" ng-model="userID" placeholder="Kullanıcı Adı">
-            <input type="email" ng-model="userMail" placeholder="Mail Adresi">
-            
-            <button ng-click="">Giriş Yap</button>
+     ♦ ng-submit = "" : Açısal ifadeleri onSubmit olayına bağlamaya yarar. Diğer bir değişle submit butonuna tıklatıldığında form için bir işlev belirlenir. 
+       Formda eksik uygulanmış bir eylem varsa form gönderilmeden durdurulacaktır.
+
+       SYNTAX:
+       <form ng-submit="expression"></form>
+
+    -->
 
 
-      </form>
-      {{cevap}}
-    </body>
+<body ng-app="myapp" ng-controller="mycontrol">
+
+    <form name="myform" ng-submit="bilgiGonder()">
+
+        <input type="text" ng-model="userID" placeholder="Kullanıcı Adı">
+        <input type="email" ng-model="userMail" placeholder="Mail Adresi">
+
+        <button ng-click="">Giriş Yap</button>
+
+    </form>
+
+    {{cevap}}
+
+</body>
+
 </html>

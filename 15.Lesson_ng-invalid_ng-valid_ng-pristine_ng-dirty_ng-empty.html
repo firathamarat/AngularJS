@@ -1,77 +1,76 @@
-    <!DOCTYPE html>
-    <html lang="tr">
+<!DOCTYPE html>
+<html lang="tr">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>15.Lesson_ng-invalid_ng-valid_ng-pristine_ng-dirty_ng-empty</title>
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15.Lesson_ng-invalid_ng-valid_ng-pristine_ng-dirty_ng-empty</title>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
 
-        <script>
-        
-            var ControllerExample = angular.module("myapp", []);
-            ControllerExample.controller("mycontrol", function( $scope ){
+    <script>
 
-               
-            });
-        </script>
+        var ControllerExample = angular.module("myapp", []);
+        ControllerExample.controller("mycontrol", function ($scope) {
+
+        });
+    </script>
 
 
-        <style>
-        
-            .Alan {
-                height: 40px;
-                width: 200px;
-                margin: 10px;
-            }
+    <style>
+        /* style tanımlamaları gerçekleştirildi */
 
-            button {
-                height: 40px;
-                width: 200px;
-                margin: 10px;
-            }
+        .Alan {
+            height: 40px;
+            width: 200px;
+            margin: 10px;
+        }
 
-            /* invalid: Formatın geçersiz olması durumunda işlem gerçekleştirir. */
-            .Alan.ng-invalid {
-                background-color: brown;
-            }
+        button {
+            height: 40px;
+            width: 200px;
+            margin: 10px;
+        }
 
-            /* valid: Formatın doğru olması durumunda işlem gerçekleştirir. */
-            .Alan.ng-valid {
-                background-color: green;
-            }
+        /* invalid: Formatın geçersiz olması durumunda işlem gerçekleştirir */
+        .Alan.ng-invalid {
+            background-color: brown;
+        }
 
-            /* Sayfa ilk yüklendiği anda verilecek özellikleri gerçekleştir. */
-            .Alan.ng-pristine {
-                background-color:  white;
-            }
+        /* valid: Formatın doğru olması durumunda işlem gerçekleştirir */
+        .Alan.ng-valid {
+            background-color: green;
+        }
 
-            /* ilgili alan üzerinden bir aktivite gerçekleştirildiğinde işlenecek özelliklerin gerçekleşmesini sağlar. */
-            .Alan.ng-dirty {
-                background-color: royalblue;
-            }
+        /* Sayfa ilk yüklendiği anda verilecek özellikleri gerçekleştir */
+        .Alan.ng-pristine {
+            background-color: white;
+        }
 
-            .Alan.ng-empty {
-                background-color: white;
-            }
+        /* ilgili alan üzerinden bir aktivite gerçekleştirildiğinde işlenecek özelliklerin gerçekleşmesini sağlar */
+        .Alan.ng-dirty {
+            background-color: royalblue;
+        }
 
-        </style>
+        .Alan.ng-empty {
+            background-color: white;
+        }
+    </style>
 
 
-    </head>
+</head>
 
-    <body ng-app="myapp" ng-controller="mycontrol">
+<body ng-app="myapp" ng-controller="mycontrol">
 
-        <form name="myform">
+    <form name="myform">
 
-            <input class="Alan" type="text" ng-model="userID" placeholder="Kullanıcı Adı">
-            <input class="Alan" type="email" ng-model="mail" placeholder="Mail Adresi">
-            
-            <button ng-click="">Giriş Yap</button>
+        <input class="Alan" type="text" ng-model="userID" placeholder="Kullanıcı Adı">
+        <input class="Alan" type="email" ng-model="mail" placeholder="Mail Adresi">
 
-      </form>
+        <button ng-click="">Giriş Yap</button>
 
-    </body>
+    </form>
+
+</body>
+
 </html>

@@ -1,42 +1,46 @@
-    <!DOCTYPE html>
-    <html lang="tr">
+<!DOCTYPE html>
+<html lang="tr">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>17.Lesson_ng-disabled</title>
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17.Lesson_ng-disabled</title>
 
-
-        <script>
-        
-            var ControllerExample = angular.module("myapp", []);
-            ControllerExample.controller("mycontrol", function( $scope, $http ){
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
 
 
-             $scope.btnState = true;
+    <script>
 
-               
-            });
-        </script>
-
-
-    </head>
+        var ControllerExample = angular.module("myapp", []);
+        ControllerExample.controller("mycontrol", function ($scope) {
 
 
-    <!-- Elementin disabled özelliği için bir özellik ayarlanmasını sağlar. -->
+        });
+    </script>
 
-    
-    <body ng-app="myapp" ng-controller="mycontrol">
 
-        <p>Nesneleri etkisiz kalın: <input type="checkbox" ng-model="gecersizKil"></p>
+</head>
 
-        <input type="text" ng-disabled="gecersizKil" placeholder="Fatura No Girişi">
-        <button ng-disabled="gecersizKil">Gönder</button>
 
-<!-- KEYUPP-->
+<!-- 
 
-     
-    </body>
+         ♦ ng-disabled = "" : Elementin disabled özelliği için bir özellik ayarlanmasını sağlar.
+
+         SYNTAX:
+         <input ng-disabled="expression"></input>
+
+    -->
+
+
+<body ng-app="myapp" ng-controller="mycontrol">
+
+    <p>Nesneleri etkisiz kalın:
+        <input type="checkbox" ng-model="gecersizKil">
+    </p>
+
+    <input type="text" ng-disabled="gecersizKil" placeholder="Fatura No Girişi">
+    <button ng-disabled="gecersizKil">Gönder</button>
+
+</body>
+
 </html>

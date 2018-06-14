@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.Lesson_ng-app_ng-controller_ng-click_function</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+
+    <script>
+
+        var ControllerExample = angular.module("myapp", []);
+        ControllerExample.controller("mycontrol", function ($scope) {
+
+
+            //exampleValue adında bir değer tanımlandı
+            $scope.exampleValue = "Burada bir değer bulunmaktadır.";
+
+            //-->
+
+            //viewFunction adında bir fonksiyon oluşturuldu
+            $scope.viewFunction = function () {
+
+                //alert ile ekrana bilgilendirme mesajı gönderildi
+                alert($scope.exampleValue);
+
+            }
+
+            //-->
+
+            //viewBill fonksiyonu dışarıdan 2 tane parametre alarak tarayıcıda uyarı olarak gösterdi
+            $scope.viewBill = function (ad, soyad) {
+
+                alert("Faturayı ödeyen: " + ad + " " + soyad);
+
+            }
+
+
+        });
+
+    </script>
+
+
+</head>
+
+
+<!--
+        ♦ ng-controller = "" : Controller uygulama içindeki veri akışını kontrol etmektedir.
+          Controller, içinde özellik ve fonksiyonları barındırdan bir javascript nesnesidir.
+          Her Controller parametre olarak $scope değeri alır ve proje içerisinde birden fazla controller tanımlanabilmektedir.
+          Scope anahtarı modeli tutturmak için kullanılmaktadır. (Model için gerekli olan metodlar da buna dahil) Tutturulan model ileride görüntü(view) tarafından yakalanacaktır.
+          Yani controller’a geçilen $scope parametresi modeli tutarak view içinde ulaşımına imkan vermektedir.
+
+          ng-app bir caddeye benzerken, ng-controller ise sokaklara benzetilebilir, bir cadde içerisinde birden fazla sokak bulunabilmektedir.
+          NOT: Tanımlanan controller body etiketinde olduğu için her yerde kullanılabilmektedir. 
+
+          SYNTAX:
+          <element ng-controller="expression"></element>
+
+        ♦ ng-click = "" : Bu direktifi elemana tıklandığında özel bir davranış belirlenmesini sağlar. 
+          Örneğin elemana tıklandığında ne yapılması gerektiğini ya da bir fonksiyon çalıştırılabilmektedir. 
+
+          SYNTAX:
+          <element ng-click="expression"></element>
+    -->
+
+
+<body ng-app="myapp" ng-controller="mycontrol">
+
+
+    <!-- Controller ile tanımlamış olan exampleValue değeri ile ng-bind direktifi kullanılarak div elementiyle bağlantısı sağlandı -->
+    <div ng-bind="exampleValue"></div>
+
+    <br>
+
+    <!-- {{expression}} ifadesi kullanılarak ekranda exampleValue değeri gösterildi -->
+    {{exampleValue}}
+
+
+    <br>
+    <br>
+
+
+    <!-- Butona basıldığında viewFunction fonksiyonu ile exampleValue değeri ekranda alert / uyarı olarak görünmesi sağlandı -->
+    <button ng-click="viewFunction()">Değeri Göster</button>
+
+
+    <br>
+    <br>
+
+
+    <!-- Kullanıcıdan bilgi girişi sağlamak amacıyla Input alanları tanımladı -->
+    <input type="text" ng-model="ad" placeholder="Adınız">
+    <input type="text" ng-model="soyad" placeholder="Soyadınız">
+
+    <!-- Oluşturulan butonun ng-click direktif alanına controller alanında tanımlanan viewBill fonksiyonu gönderdildi, Input alanlarının ng-modelleri fonksiyonla birlikte parametre olarak gönderildi -->
+    <button ng-click="viewBill(ad, soyad)">Ödemeyi Tamamla</button>
+
+    <br>
+
+    <!-- {{expression}} özelliği ile ekranda kullanıcıya ait bilgiler gösterildi -->
+    Faturayı Ödeyen Kişi: {{ad + " " + soyad}}
+
+
+</body>
+
+</html>
