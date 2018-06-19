@@ -89,7 +89,13 @@
         <p>Fiyat:
             <input type="number" ng-model="priceTotal.fiyat" />
         </p>
-        <p>Ödenecek: {{ priceTotal.miktar * priceTotal.fiyat }} ₺ </p>
+
+        <!-- expression ile hesaplama yapılması -->
+        <p>Ödenecek: {{ priceTotal.miktar * priceTotal.fiyat }} ₺</p>
+
+        <!-- ng-bind ile hesaplama yapılması -->
+        <p>Ödenecek:
+            <span ng-bind="priceTotal.miktar * priceTotal.fiyat"></span> ₺</p>
     </div>
 
 

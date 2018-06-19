@@ -10,8 +10,10 @@
 
     <script>
 
+        //timeout fonksiyonunu kullanabilmek için $timeout kullanılmalıdır.
+        //interval fonksiyonunu kullanabilmek için $interval kullanılmalıdır
         var ControllerExample = angular.module("myapp", []);
-        ControllerExample.controller("mycontrol", function ($scope, $http) {
+        ControllerExample.controller("mycontrol", function ($scope, $timeout, $interval) {
 
             //startNumber adında başlangıç bir değer oluşturuldu ve 0 değeri atandı
             $scope.startNumber = 0;
@@ -29,6 +31,22 @@
             }
 
 
+            //textField adında alan oluşturularak metin atandı
+            $scope.textField = "Bu yazı 2 saniye içinde değişecektir!";
+
+            //timeout fonksiyonu tanımlandı, değer değiştirildi ve süresi girildi
+            $timeout(function () {
+                $scope.textField = "Yazı 2 saniye sonra değişti!";
+            }, 2000);
+
+
+            //theTime adında değer oluşturularak toLocaleTimeString() değeri atandı
+            $scope.theTime = new Date().toLocaleTimeString();
+
+            //interval fonksiyonu tanımlandı, değer değiştirildi ve süresi girildi
+            $interval(function () {
+                $scope.theTime = new Date().toLocaleTimeString();
+            }, 1000);
 
         });
 
@@ -63,6 +81,14 @@
               SYNTAX: <element ng-if="expression"></element> 
 
               NOT: startNumber == 5 && ifadesiyle startNumber değişkenin 5 olması durumunda bu style dosyasını aktif yapacaktır. 
+
+            ♦ $timeout : Durumlara göre yapılacak işlemlerin veya çalıştırılacak fonksiyonların ertelenmesi sureti ile bir bakıma uygulamada zaman yönetimi sağlayan servisdir. 
+
+              SYNTAX: $timeout([fn], [delay], [invokeApply], [Pass]);
+
+            ♦ $interval : Yapılacak işlem veya çalıştırılacak fonksiyon verilen süreye göre sürekli devam etmektedir.
+
+              SYNTAX: $interval(fn, delay, [count], [invokeApply], [Pass]);
         -->
 
 
@@ -112,11 +138,22 @@
 
     <!-- 
              ng-show ve ng-hide ile display:none üzerinde görüntüleme işleri yaparken,
-             ng-if ise kod üzerinde işlemler yapılmaktadır.
+             ng-if ise kod üzerinde işlemler yapılmaktadır. (kodu kaldırmaktadır)
         -->
 
     <div ng-if="durum">Bu gizlenebilen yazı örneğidir!</div>
 
+    <br>
+    <br>
+    <hr>
+    <br>
+    <br>
+
+    <!-- textField değeri ng-bind ile p elementinde gösterildi -->
+    <p ng-bind="textField"></p>
+
+    <!-- theTime değeri ng-bind ile p elementinde gösterildi -->
+    <p ng-bind="theTime"></p>
 
 </body>
 

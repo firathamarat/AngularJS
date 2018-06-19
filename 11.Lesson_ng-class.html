@@ -42,6 +42,10 @@
         .sitalic {
             font-style: italic;
         }
+
+        .slinethrough {
+            text-decoration:line-through;
+        }
     </style>
 
 </head>
@@ -94,10 +98,11 @@
     <br>
  
 
-    <p style="font-size:25px" ng-class="{'sbold' : mbold, 'sitalic': mitalic, 'sunderlined': munderlined }">Bu bir ng-class örneği yazısı</p>
+    <p style="font-size:25px" ng-class="{'sbold' : mbold, 'sitalic': mitalic, 'sunderlined': munderlined, 'slinethrough': mlinethrough }">Bu bir ng-class örneği yazısı</p>
     <input type="checkbox" ng-model="mbold"> Kalın Yap
     <input type="checkbox" ng-model="mitalic"> İtalik Yap
     <input type="checkbox" ng-model="munderlined"> Altını Çiz
+    <input type="checkbox" ng-model="mlinethrough"> Üstünü Çiz
 
 
 </body>
