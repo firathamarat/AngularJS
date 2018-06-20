@@ -7,7 +7,7 @@
 
 <b>AngularJS I DERSLERİ : </b>
 
-<a target="_blank" href="http://oguzhamarat.com/github/AngularJS11/1.Lesson_AngularJS-about_ng-app_ng-model.html">• 1.Lesson_AngularJS-about_ng-app_ng-model</a><br>
+<a target="_blank" href="http://oguzhamarat.com/github/AngularJS1/1.Lesson_AngularJS-about_ng-app_ng-model.html">• 1.Lesson_AngularJS-about_ng-app_ng-model</a><br>
 <a target="_blank" href="http://oguzhamarat.com/github/AngularJS1/2.Lesson_ng-init_ng-bind.html">• 2.Lesson_ng-init_ng-bind</a><br>
 <a target="_blank" href="http://oguzhamarat.com/github/AngularJS1/3.Lesson_ng-app_ng-controller_ng-click_function.html">• 3.Lesson_ng-app_ng-controller_ng-click_function</a><br>
 <a target="_blank" href="http://oguzhamarat.com/github/AngularJS1/4.Lesson_ng-repeat_Filter_JSON-Array.html">• 4.Lesson_ng-repeat_Filter_JSON-Array</a><br>
