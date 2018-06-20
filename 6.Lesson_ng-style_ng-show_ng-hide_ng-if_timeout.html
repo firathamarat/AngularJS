@@ -155,6 +155,18 @@
     <!-- theTime değeri ng-bind ile p elementinde gösterildi -->
     <p ng-bind="theTime"></p>
 
+    <br>
+    <br>
+    <hr>
+    <br>
+    <br>
+
+    <!-- Extra: ng-copy: kopyalama işlemi gerçekleştiğinde çalışmaktadır -->
+    <input type="text" ng-copy="copy = true" ng-model="test">
+    <div ng-if="copy">Kopyalandı</div>
+
+
+
 </body>
 
 </html>
