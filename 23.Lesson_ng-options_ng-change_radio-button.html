@@ -82,7 +82,7 @@
 <body ng-app="myapp" ng-controller="mycontrol">
 
     <br>
-                                                                                 <!-- text as value for item in items -->
+    <!-- text as value for item in items -->
 
     <select ng-model="illerBilgi" ng-change="changeFunction(illerBilgi)" ng-options="il.plaka as il.il for il in iller">
     </select>
@@ -105,6 +105,32 @@
             <p>{{post.body}}</p>
         </li>
     </ul>
+
+    <br>
+    <br>
+    <hr>
+    <br>
+
+
+    <!-- Radio Butonları oluşturuldu NOT: ng-model isimleri aynı olmalıdır -->
+    <input type="radio" ng-model="myVar" value="iett">İETT
+    <input type="radio" ng-model="myVar" value="metrobüs">Metrobüs
+    <input type="radio" ng-model="myVar" value="metro">Metro
+
+    <div ng-switch="myVar">
+        <div ng-switch-when="iett">
+            <h1>İETT</h1>
+            <p>İETT - Seferleri saatleri ve bilgileri listelenmiştir.</p>
+        </div>
+        <div ng-switch-when="metrobüs">
+            <h1>Metrobüs</h1>
+            <p>Metrobüs - Seferleri saatleri ve bilgileri listelenmiştir.</p>
+        </div>
+        <div ng-switch-when="metro">
+            <h1>Metro</h1>
+            <p>Metro - Seferleri saatleri ve bilgileri listelenmiştir.</p>
+        </div>
+    </div>
 
 
 </body>
