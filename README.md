@@ -1,11 +1,11 @@
 <img src="https://cdn.worldvectorlogo.com/logos/angular-3.svg">
 
-<b>Eğitim amaçlı oluşturulmuş bir repository'dur.</b> AngularJS I derslerinin açıklamalarına, kodlarına ve demolarına kolay erişim sağlamaktadır. Herhangi bir sorun ve istek için, 
+<b>Eğitim amaçlı oluşturulmuş bir AngularJS1 repository'dur.</b> AngularJS 1 derslerinin açıklamalarına, kodlarına ve demolarına kolay erişim sağlamaktadır. Herhangi bir sorun ve istek için, 
 <a href="mailto:gmail@oguzhamarat.com">gmail@oguzhamarat.com</a> adresinden ulaşabilirsiniz. Visit : <a href="http://oguzhamarat.com/github/AngularJS1">DEMO</a>.
 
 <hr style="background-color:red">
 
-<b>AngularJS I DERSLERİ : </b>
+<b>AngularJS 1 DERSLERİ : </b>
 
 <a target="_blank" href="http://oguzhamarat.com/github/AngularJS1/1.Lesson_AngularJS-about_ng-app_ng-model.html">• 1.Lesson_AngularJS-about_ng-app_ng-model</a><br>
 <a target="_blank" href="http://oguzhamarat.com/github/AngularJS1/2.Lesson_ng-init_ng-bind.html">• 2.Lesson_ng-init_ng-bind</a><br>
