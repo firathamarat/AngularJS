@@ -1,6 +1,6 @@
 <img src="https://cdn.worldvectorlogo.com/logos/angular-3.svg">
 
-<b>Eğitim amaçlı oluşturulmuş bir AngularJS1 repository'dur.</b> AngularJS 1 derslerinin açıklamalarına, kodlarına ve demolarına kolay erişim sağlamaktadır. Herhangi bir sorun ve istek için, 
+<b>Eğitim amaçlı oluşturulmuş bir AngularJS1 repository'dur.</b> AngularJS1 derslerinin açıklamalarına, kodlarına ve demolarına kolay erişim sağlamaktadır. Herhangi bir sorun ve istek için, 
 <a href="mailto:gmail@oguzhamarat.com">gmail@oguzhamarat.com</a> adresinden ulaşabilirsiniz. Visit : <a href="http://oguzhamarat.com/github/AngularJS1">DEMO</a>.
 
 <hr style="background-color:red">
