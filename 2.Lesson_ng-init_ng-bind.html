@@ -2,6 +2,7 @@
 <html lang="tr">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2.Lesson_ng-init_ng-bind</title>
@@ -30,18 +31,17 @@
 
     -->
 
-<body ng-app="" ng-init="exampleValue='Burada bir değer var!'; total = 15 + 10">
-
+<body ng-app="" ng-init="exampleValue='Başlangıç değeri atandı!'; total = 15 + 10">
 
 
     <!-- ng-init ile tanımlamış olan exampleValue değişkeni ng-bind ile p elementine bağlandı -->
     <p ng-bind="exampleValue"></p>
 
-    <!-- 
+        <!--
              *** NOT:
              Bunun yerine {{expression}} özelliği de kullanılabilirdi. Expression bazı durumlarda kod okumasını kolaylaştırmaktadır.
-             Fakat ng-bild ile arasındaki tek fark ise, {{expression}} sayfa tamamen yüklene kadar ekrandaki alanlar text olarak görünmektedir. 
-             Bu durum da ng-cloak direktifi kullanılarak çözülmektedir.. 
+             Fakat ng-bild ile arasındaki tek fark ise, {{expression}} sayfa tamamen yüklene kadar ekrandaki alanlar text olarak görünmektedir.
+             Bu durum da ng-cloak direktifi kullanılarak çözülmektedir..
         -->
 
     {{"Toplam Değer: " + total}}
@@ -68,8 +68,7 @@
             <span ng-bind="superCar.maxSpeed"></span>
         </p>
 
-        <p>Haftanın 1. Günü
-            <span ng-bind="WeekDay[0]"></span>, haftanın 6. günü ise {{ WeekDay[5] }}'dir</p>
+        <p>Haftanın 1. Günü <span ng-bind="WeekDay[0]"></span>, haftanın 6. günü ise {{ WeekDay[5] }}'dir</p>
 
 
     </div>
@@ -94,8 +93,7 @@
         <p>Ödenecek: {{ priceTotal.miktar * priceTotal.fiyat }} ₺</p>
 
         <!-- ng-bind ile hesaplama yapılması -->
-        <p>Ödenecek:
-            <span ng-bind="priceTotal.miktar * priceTotal.fiyat"></span> ₺</p>
+        <p>Ödenecek: <span ng-bind="priceTotal.miktar * priceTotal.fiyat"></span> ₺</p>
     </div>
 
 

@@ -13,9 +13,11 @@
         var ControllerExample = angular.module("myapp", []);
         ControllerExample.controller("mycontrol", function ($scope, $http) {
 
+
             //Tarih üzerinde işlemler yapmak için değerler tanımlandı
-            var tarih = new Date();
-            $scope.tarihGoster = tarih.getTime();
+            var date = new Date();
+            $scope.dateView = date.getTime();
+
 
             //$http.get("url").then( successfulFunc, unsuccessfulFunc);
             $http.get("https://jsonplaceholder.typicode.com/users").then(function (AlinanDeger) {
@@ -24,6 +26,7 @@
                 //Data yazılmaz ise 200 function(d){b||(b=yd(a)); vb bilgilerle birlikte gelir sadece veriler gelsin isteniyorsa data yazılmalıdır.
 
             });
+
 
         });
 
@@ -58,26 +61,29 @@
     Users Search:
     <input type="search" ng-model="userSearch">
 
+    Name Search:
+    <input type="search" ng-model="nameSearch">
+
 
     <ul>
-        <!-- Arama sonuçlarının sıralaması name alanına göre gerçekleştirildi -->
-        <li ng-repeat="veri in veriler | filter: userSearch | orderBy: 'name'" style="padding:20px">
+        <!-- Arama sonuçlarının sıralaması name alanına göre gerçekleştirildi | filter : {name:nameSearch} ifadesiyle sadece name alanına göre arama gerçekleştirildi -->
+        <li ng-repeat="veri in veriler | filter: userSearch | orderBy: 'name' | filter : {name:nameSearch}" style="padding:20px">
             {{veri.id}}, {{veri.name}}, {{veri.email}}
         </li>
     </ul>
 
     <hr>
 
-    <!-- Controller alanında tanımlanan tarihGoster değerine göre farklı saat ve tarih filtreleri uygulanabilmektedir -->
+    <!-- Controller alanında tanımlanan dateView değerine göre farklı saat ve tarih filtreleri uygulanabilmektedir -->
     <b>Tarih ve Saat Filter:</b>
-    <br> {{tarihGoster}}
-    <br> {{tarihGoster | date}}
-    <br> {{tarihGoster | date: 'short'}}
-    <br> {{tarihGoster | date: 'medium'}}
-    <br> {{tarihGoster | date: 'longDate'}}
-    <br> {{tarihGoster | date: 'shortDate'}}
-    <br> {{tarihGoster | date: 'fullDate'}}
-    <br> {{tarihGoster | date: 'shortTime'}}
+    <br> {{dateView}}
+    <br> {{dateView | date}}
+    <br> {{dateView | date: 'short'}}
+    <br> {{dateView | date: 'medium'}}
+    <br> {{dateView | date: 'longDate'}}
+    <br> {{dateView | date: 'shortDate'}}
+    <br> {{dateView | date: 'fullDate'}}
+    <br> {{dateView | date: 'shortTime'}}
 
 </body>
 

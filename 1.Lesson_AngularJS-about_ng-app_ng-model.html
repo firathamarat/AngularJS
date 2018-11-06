@@ -2,6 +2,7 @@
 <html lang="tr">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1.Lesson_ng-app_ng-model</title>
@@ -17,7 +18,7 @@
         ♦ CDN Kütüphanesi Adresi: https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js
 
         ANGULARJS:
-        AngularJS, Google tarafından açık kaynak kodlu olarak geliştirilen, zengin, genişletilebilir,ciki yönlü veri aktarımı yapabilen
+        AngularJS, Google tarafından açık kaynak kodlu olarak geliştirilen, zengin, genişletilebilir, çift yönlü veri aktarımı yapabilen
         ve dinamik web uygulamaları yapmak için kullanılan bir JavaScript framwork’ü, MVC kütüphanesidir, SPA (Single Page Application) sayfalar geliştirilmesine olanak tanır. 
         SPA’nın temeli yüklenen bir kaynağı tekrar yüklemeden o sayfada sadece ihtiyaç duyulan alanı değiştirmektir. 
         MVC (Modal View Controller) verinin, görünümün ve kontrollerin ayrı tutulmasıdır. 
@@ -61,7 +62,7 @@
 <body ng-app="">
 
 
-    <!-- AngularJS'in sayfa içerisinde doğru bir şekilde çalıştığını test etmek için expressions ilestring ve matematiksel işlemler ekranda gösterilebilir -->
+    <!-- AngularJS'in sayfa içerisinde doğru bir şekilde çalıştığını test etmek için expressions ile string ve matematiksel işlemler ekranda gösterilebilir -->
     {{"Sayıların Toplamı: " + (5 + 20)}}
 
     <br>
@@ -76,6 +77,13 @@
     <!-- Input alanına girilen doğum tarihi ile expressions ifadesinde matematiksel işlem yapılarak kullanıcının yaşı ekranda gösterildi -->
     <input type="number" ng-model="ageCalculation" placeholder="Doğum Yılı"> {{2018 - ageCalculation}}
 
+    <br>
+    <br>
+
+    <!-- Girilen doğru ve yanlış soru sayısına göre net sonuç ekranda expressions ile gösterildi -->
+    <input type="number" ng-model="correctNumber" placeholder="Doğru Sayısı:"> &nbsp;
+    <input type="number" ng-model="wrongNumber" placeholder="Yanlış Sayısı:"> &nbsp;
+    Hesaplanan Net Değer: {{correctNumber - (wrongNumber/4)}}
 
 </body>
 

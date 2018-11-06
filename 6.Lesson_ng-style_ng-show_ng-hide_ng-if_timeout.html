@@ -2,6 +2,7 @@
 <html lang="tr">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>6.Lesson_ng-style_ng-show_ng-hide_ng-if</title>
@@ -11,7 +12,8 @@
     <script>
 
         //timeout fonksiyonunu kullanabilmek için $timeout kullanılmalıdır.
-        //interval fonksiyonunu kullanabilmek için $interval kullanılmalıdır
+        //interval fonksiyonunu kullanabilmek için $interval kullanılmalıdır.
+
         var ControllerExample = angular.module("myapp", []);
         ControllerExample.controller("mycontrol", function ($scope, $timeout, $interval) {
 
@@ -133,7 +135,10 @@
     <br>
 
     <!-- Butonun ng-click direktifine Controller alanında tanımalanan fonksiyon gönderildi -->
-    <button ng-click="hideShowFunction()">Göster / Gizle</button> --> {{durum}}
+    <button ng-click="hideShowFunction()">
+        <span ng-show="!durum">Göster</span>
+        <span ng-show="durum">Gizle</span>
+    </button> --> {{durum}}
     <div ng-show="durum">Bu gizlenebilen yazı örneğidir!</div>
 
     <!-- 

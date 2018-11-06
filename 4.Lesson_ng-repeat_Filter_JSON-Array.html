@@ -21,12 +21,12 @@
 
             //Veriler adında dizi tanımlandı
             $scope.veriler = [
-                { "ad": "Elif", "soyad": "Avşar", "yas": 24 },
-                { "ad": "Fırat", "soyad": "Hamarat", "yas": 24 },
-                { "ad": "Ali", "soyad": "Sönmez", "yas": 15 },
-                { "ad": "Veli", "soyad": "Söner", "yas": 25 },
-                { "ad": "Ayşe", "soyad": "Sönecek", "yas": 12 },
-                { "ad": "Mehmet", "soyad": "Söndü", "yas": 22 }
+                { "ad": "Elif", "soyad": "AVŞAR", "yas": 24 },
+                { "ad": "Fırat", "soyad": "HAMARAT", "yas": 24 },
+                { "ad": "Ali", "soyad": "SÖNMEZ", "yas": 15 },
+                { "ad": "Veli", "soyad": "SÖNER", "yas": 25 },
+                { "ad": "Ayşe", "soyad": "SÖNECEK", "yas": 12 },
+                { "ad": "Mehmet", "soyad": "SÖNDÜ", "yas": 22 }
             ];
 
             //haftaGunleri adında dizi tanımlandı
@@ -83,6 +83,7 @@
     İsim Arama :
     <input type="text" ng-model="nameSearch" placeholder="Aranacak Kelime">
     <br>
+
 
     <ul>
         <!-- ng-repeat döngü oluşturmak istenen yere yazılır -->
@@ -183,7 +184,7 @@
         {brand:'Bmw',country:'Germany'}]">
 
         <ul>
-            <li ng-repeat="car in garage | limitTo:2">
+            <li ng-repeat="car in garage | limitTo:3">
                 {{ car.brand + ' ' + car.country }}
             </li>
         </ul>
