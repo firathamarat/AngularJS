@@ -80,31 +80,8 @@
 
             }
 
-        });
+        })
 
-
-        //Attribute olarak ilgili nesnenin ne zaman görülüp görünmeyeceği özelliği verildi
-
-        ControllerExample.directive("view", function () {
-
-            return {
-
-                link: function (scope, element, attrs) {
-
-                    restrict: 'A', // E : Element için, C : Class için, A ise Attribute için kısıtlama getirmektedir
-
-                    if(attrs.view =='false'){
-
-                        element.css({"display": "none"});
-
-                    }
-
-                }
-
-
-            }
-
-        });
 
     </script>
 
@@ -157,7 +134,7 @@
         quis. Mauris luctus risus quis consectetur vulputate. Maecenas in odio eu metus cursus vestibulum. </div>
     <div atrributemydirective="50">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean facilisis felis lectus, non accumsan tellus placerat
         quis. Mauris luctus risus quis consectetur vulputate. Maecenas in odio eu metus cursus vestibulum. </div>
-    <div atrributemydirective="100" view="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean facilisis felis lectus, non accumsan tellus placerat
+    <div atrributemydirective="100">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean facilisis felis lectus, non accumsan tellus placerat
         quis. Mauris luctus risus quis consectetur vulputate. Maecenas in odio eu metus cursus vestibulum. </div>
 
 </body>
