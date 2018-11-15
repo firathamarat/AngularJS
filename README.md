@@ -41,4 +41,4 @@
 <a target="_blank" href="http://oguzhamarat.com/github/AngularJS1/30.Lesson_otopark-kontrol-sistemi.html">• 30.Lesson_otopark-kontrol-sistemi</a><br>
 <a target="_blank" href="http://oguzhamarat.com/github/AngularJS1/31.Lesson_ng-show_tab-menu-example.html">• 31.Lesson_ng-show_tab-menu-example</a><br>
 <a target="_blank" href="http://oguzhamarat.com/github/AngularJS1/32.Lesson_special-filter.html">• 32.Lesson_special-filter</a><br>
-• → güncelleniyor... ( sn: 20.06.2018 )
+• → güncelleniyor... ( sn: 15.11.2018 )
