@@ -21,11 +21,14 @@
                     $scope.$digest();
 
                     /*
+
+                    Farklı fonksiyonlar üzerinden #scope değeri değişirse anguların anlaması için $scope değeri güncellenmesini sağlamaktadır
+
                     digest() : Sadece $scope güncellerken,
                     $apply() : rootScope'u da güncellemektedir.
 
-                    $apply:Kelime anlamı olarak başvurmak ve kullanmak anlamına gelen bu işlevin yaptığı tam olarak bu aslında bizim $Scope ile kullandığımız parametreleri var olmasını sağlıyor.
-                    $digest:Kelime anlamı olarak hazmetmek ve sindirmek anlamına gelen bu işlevin yaptığı tam olarak bu aslında bizim $Scope ile kullandığımız parametrelerin değerlerini pasif hale getiriyor.
+                    $apply: Kelime anlamı olarak başvurmak ve kullanmak anlamına gelen bu işlevin yaptığı tam olarak bu aslında bizim $Scope ile kullandığımız parametreleri var olmasını sağlıyor.
+                    $digest: Kelime anlamı olarak hazmetmek ve sindirmek anlamına gelen bu işlevin yaptığı tam olarak bu aslında bizim $Scope ile kullandığımız parametrelerin değerlerini pasif hale getiriyor.
                     */
 
                 });

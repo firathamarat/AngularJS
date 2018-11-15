@@ -1,0 +1,52 @@
+    <!DOCTYPE html>
+    <html lang="tr">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>21.1.Lesson_Multi-Controller_Factory</title>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+
+        <script>
+
+            angular.module("myapp", [])
+                .factory("helloService", function () {
+
+                    return {
+
+                        sayHello: function (name) {
+
+                            alert(`Hello: ${name}`);
+                            console.log(`Hello: ${name}`);
+
+                        },
+
+                        echo: function (message) {
+
+                            console.log(`Message: ${message}`);
+
+                        }
+
+                    }
+            })
+
+                .controller("mycontroller", function ($scope, helloService) {
+
+                    helloService.echo("Factory");
+
+                })
+
+
+        </script>
+
+
+    </head>
+
+
+    <body ng-app="myapp" ng-controller="mycontroller">
+
+
+    </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.1.Lesson_ng-app_ng-controller_Prent-Child</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+
+    <script>
+
+            angular.module("myapp", [])
+                .controller("ParentController", function ($scope) {
+
+                })
+                .controller("ChildController", function ($scope) {
+
+                })
+
+    </script>
+
+</head>
+
+    <!--
+        Angular JS üzerinde kalıtım bulunmaktadır.
+        ChildController içinde bulunan {{childName}} ifadesi eğer kendi controllerı scope'u içinde bu değeri bulamazsa bir üst kalıtımı olan ParentController scope'una bakmaktadır.
+        ParentController controllerında childName alanına bir değer verirsek ChildController controllerı etkilenmektedir fakat tam tersi bir durum söz konusu değildir.
+        ChildController controllerındaki childName alanından ParentController controllerındaki childName alanı etkilenmez.
+
+        NOT: Nesnelerin değerleri silinmiş gibi görünse bile boş bir string değeri olduğu için bir üst atadan değer almayacaktır.
+    -->
+
+<body ng-app="myapp">
+
+
+    <div ng-controller="ParentController">
+
+        <input type="text" ng-model="childName">
+        <h2>Parent Header: {{childName}}</h2>
+
+        <div ng-controller="ChildController">
+
+            <input type="text" ng-model="childName">
+            <h2>Child Header: {{childName}}</h2>
+
+        </div>
+
+
+    </div>
+
+
+
+
+</body>
+
+</html>

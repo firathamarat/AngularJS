@@ -2,11 +2,14 @@
 <html lang="tr">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>24.Lesson_$rootScope</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+
+        <!-- rootScope, Factory Controller -->
 
     <script>
 
@@ -26,6 +29,27 @@
             $scope.text2 = $rootScope.text1;
 
         });
+
+
+        /**
+            Şeklinde bir kullanımıda vardır. Bu şekilde ilk değer ataması gerçekleştirilebilir.
+
+         angular.module("myapp", [])
+
+                .run(function( $rootScope ){
+                    $rootScope.test = "test";
+                })
+                .controller("mycontrol", function( $scope ){
+
+                })
+                .controller("mycontrol2", function( $scope ){
+
+                });
+
+              ***NOT: mycontrol ve mycontrol2 scopuna bakan angular bu controllerın scope alanında "test" alanını bulamadığı için $rootScope alanına bakacaktır.
+          */
+
+
 
 
     </script>

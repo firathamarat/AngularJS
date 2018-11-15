@@ -48,7 +48,11 @@
     <!-- ng-show ile ilgili span nesnenin ekranda görünüp görünmeyeceği, ng-class ile belirtilen koşula göre stil atamaları gerçekleştirildi -->
     <span ng-show="state" ng-class="{green:state}">Bildirimleri ekranda görüntülemeyi aktifleştirdiniz.</span>
     <span ng-show="!state" ng-class="{red:!state}">Bildirimleri ekranda görüntülemeyi kapattınız.</span>
+    <br>
+    <span ng-class="{green:state,red:!state}">Enabled</span>
 
 </body>
 
 </html>
+
+<!--watch ile izleyerek fonksiyon verebiliriz-->

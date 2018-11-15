@@ -2,14 +2,14 @@
     <html lang="tr">
 
     <head>
+
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>21.Lesson_Multi-Controller_Factory</title>
+        <title>21.0.Lesson_Multi-Controller_Factory</title>
         
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
 
         <script>
-
 
             var ControllerExample = angular.module("myapp", []);
 
@@ -20,7 +20,7 @@
                 isimler = ["Elif", "Fırat", "Ali", "Veli", "Ayşe", "Nur"];
                 return isimler;
 
-            })
+            });
 
             //* NOT: Oluşturulan Factory hangi controller içinde kullanılacaksa eklenmelidir
 
@@ -46,6 +46,43 @@
                 //factory ile oluşturulan değerler isimGoster alanına atandı
                 $scope.isimGoster = firstFactory;
             });
+
+
+
+            ControllerExample.controller("mycontrol3", function ($scope) {
+
+                $scope.products = ["Milk", "Bread", "Cheese"];
+
+                $scope.addItem = function (Item) {
+                
+                    $scope.errortext = "";
+
+                    if (!$scope.AddMe) {
+                        return;
+                    }
+
+                    if ($scope.products.indexOf($scope.AddMe) == -1) {
+
+                        $scope.products.push($scope.AddMe);
+                        $scope.AddMe="";
+
+                    } else {
+                        $scope.errortext = "The item is already in your shopping list.";
+                    }
+
+                }
+                
+                
+                $scope.removeItem = function (index) {
+
+                    $scope.errortext = "";
+                    $scope.products.splice(index, 1);
+
+                }
+                
+
+            });
+
 
         </script>
 
@@ -87,6 +124,28 @@
             </ul>
 
         </div>
+
+
+        <hr><!-- -->
+
+
+        <div ng-controller="mycontrol3">
+
+            <input type="text" ng-model="AddMe">
+            <button ng-click="addItem(AddMe)">ADD</button>
+
+            <br>
+
+            <ul>
+                <li ng-repeat="product in products">
+                    <a ng-click="removeItem($index)"> X - </a>{{product}}
+                </li>
+
+                <li ng-show="errortext" style="color:darkred; font-family:'Open Sans'">{{errortext}}</li>
+            </ul>
+
+        </div>
+
 
 
     </body>

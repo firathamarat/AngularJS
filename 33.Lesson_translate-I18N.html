@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>33.Lesson_translate-I18N.html</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+
+    <!-- Translate CDN projemize eklendi -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.6.1/angular-translate.js"></script>
+
+    <script>
+
+    angular.module("myapp", ['pascalprecht.translate'])
+
+        //config ile uygulamamız çalışmadan başlamadan önce konfigrasyonların sağlanması gerçekleştirildi
+        .config( function ( $translateProvider ) {
+
+
+            //Diller eklendi
+            $translateProvider.translations('en', {
+
+                TITLE: 'Hello AngularJS Title',
+                TEXT: ' Hello AngularJS Text',
+                BUTTON_TEXT: 'Hello Angular Button',
+                LANGUAGE_TR : 'TURKISH',
+                LANGUAGE_EN : 'ENGLISH',
+
+            });
+
+            $translateProvider.translations('tr', {
+
+                TITLE: 'Merhaba AngularJS Başlık',
+                TEXT: 'Merhaba AngularJS Yazı',
+                BUTTON_TEXT: 'Merhaba AngularJS Butonu',
+                LANGUAGE_TR : 'TÜRKÇE',
+                LANGUAGE_EN : 'İNGİLİZCE',
+
+            })
+
+            //Default olarak uygulama çalıştığında görünecek olan dil belirlendi
+            $translateProvider.preferredLanguage('en');
+
+        })
+
+
+        .controller('mycontroller', function ($scope, $translate) {
+
+           //changeLanguage fonksiyonu ile dil değişimleri gerçekleştirildi
+           $scope.changeLanguage = function (key) {
+                $translate.use(key);
+
+            };
+
+        });
+
+
+
+    </script>
+
+
+</head>
+
+
+<body ng-app="myapp" ng-controller="mycontroller">
+
+<p translate="TITLE"></p>
+<p translate="TEXT"></p>
+<button translate="BUTTON_TEXT"></button>
+
+<br><br>
+<button ng-click="changeLanguage('tr')" translate="LANGUAGE_TR"></button>
+<button ng-click="changeLanguage('en')" translate=" LANGUAGE_EN"></button>
+
+</body>
+
+</html>

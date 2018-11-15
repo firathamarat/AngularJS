@@ -2,6 +2,7 @@
 <html lang="tr">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>23.Lesson_ng-options_ng-change</title>
@@ -32,6 +33,7 @@
                 , { plaka: "63", il: 'ŞANLIURFA' }, { plaka: "64", il: 'UŞAK' }, { plaka: "65", il: 'VAN' }, { plaka: "66", il: 'YOZGAT' }, { plaka: "67", il: 'ZONGULDAK' }, { plaka: "68", il: 'AKSARAY' }
                 , { plaka: "69", il: 'BAYBURT' }, { plaka: "70", il: 'KARAMAN' }, { plaka: "71", il: 'KIRKLARELİ' }, { plaka: "72", il: 'BATMAN' }, { plaka: "73", il: 'ŞIRNAK' }, { plaka: "74", il: 'BARTIN' }
                 , { plaka: "75", il: 'ARDAHAN' }, { plaka: "76", il: 'IĞIDIR' }, { plaka: "77", il: 'YALOVA' }, { plaka: "78", il: 'KARABÜK' }, { plaka: "79", il: 'KİLİS' }, { plaka: "80", il: 'OSMANİYE' }, { plaka: "81", il: 'DÜZCE' }];
+
 
             //Select nesnesi değiştiğinde ekranda alert olarak göstermek için changeFunction fonksiyonu declare edildi e parametreyle bilgi alındı
             $scope.changeFunction = function (illerBilgi) {
@@ -82,8 +84,8 @@
 <body ng-app="myapp" ng-controller="mycontrol">
 
     <br>
-    <!-- text as value for item in items -->
 
+                                                                                <!-- value as text for item in items -->
     <select ng-model="illerBilgi" ng-change="changeFunction(illerBilgi)" ng-options="il.plaka as il.il for il in iller">
     </select>
 

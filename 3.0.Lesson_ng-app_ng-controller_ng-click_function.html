@@ -15,7 +15,7 @@
         ControllerExample.controller("mycontrol", function ($scope) {
 
 
-            //exampleValue adında bir değer tanımlandı
+            //exampleValue adında bir değer tanımlandı ($scope'a exampleValue properties atandı ve içine değer girildi)
             $scope.exampleValue = "Burada bir değer bulunmaktadır.";
 
             //-->
@@ -50,6 +50,19 @@
         });
 
     </script>
+
+
+    <!--
+    Aşağıdaki şekilde bir kullanımda mevcuttur
+
+    <script>
+        angular.module("myapp", [])
+            .controller("mycontrol",function ($scope) {
+
+            })
+    </script>
+    -->
+
 
 
 </head>

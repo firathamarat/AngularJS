@@ -94,3 +94,20 @@ ControllerExample.controller("mycontrol", function ($scope) {
 
 
 });
+
+
+
+    /*
+        angular.module('myapp', [])
+            .filter('myFilter', function(){
+
+                return function(input){
+
+                    return input.toUpperCase();
+
+                }
+            ));
+
+    Şeklinde kendi filtremizi kullanaibiliriz
+    */
+
